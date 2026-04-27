@@ -381,6 +381,251 @@ const articlesData = [
     date: '2026-04-05',
     readTime: '20分钟',
     icon: '🔍'
+  },
+  {
+    id: 13,
+    title: 'AI Agent开发：从手写识别到智能助手',
+    summary: '深入理解AI Agent的核心概念与开发框架，构建自主决策的智能系统。',
+    content: `
+      <h2>什么是AI Agent？</h2>
+      <p>AI Agent是能够自主决策、执行任务、与环境交互的智能系统。它不仅能回答问题，还能规划行动、调用工具、完成复杂任务。</p>
+      
+      <h2>核心组件</h2>
+      <ul>
+        <li><strong>规划(Planning)</strong>：将复杂任务分解为可执行的子任务</li>
+        <li><strong>记忆(Memory)</strong>：存储对话历史和关键信息</li>
+        <li><strong>工具(Tools)</strong>：调用外部API、搜索、计算等</li>
+        <li><strong>行动(Action)</strong>：执行决策并评估结果</li>
+      </ul>
+      
+      <h2>主流框架</h2>
+      <p><strong>LangGraph</strong> - 构建复杂多步骤Agent工作流</p>
+      <p><strong>AutoGPT</strong> - 自主任务分解与执行</p>
+      <p><strong>CrewAI</strong> - 多Agent协作框架</p>
+      
+      <h2>应用场景</h2>
+      <p>个人助手、代码助手、数据分析、客服机器人自动化工作流</p>
+    `,
+    category: 'ai',
+    categoryName: 'AI工程师',
+    date: '2026-04-26',
+    readTime: '18分钟',
+    icon: '🤖'
+  },
+  {
+    id: 14,
+    title: '大模型微调：LoRA与QLoRA实战指南',
+    summary: '掌握低成本高效的大模型微调技术，让模型适配特定领域任务。',
+    content: `
+      <h2>为什么需要微调？</h2>
+      <p>预训练大模型具备通用能力，但针对特定领域任务，垂直微调能显著提升效果。</p>
+      
+      <h2>LoRA原理</h2>
+      <p>Low-Rank Adaptation通过冻结原模型权重，只训练低秩矩阵，大幅减少参数量。</p>
+      <ul>
+        <li>训练参数量减少100-1000倍</li>
+        <li>显存需求大幅降低</li>
+        <li>可动态切换不同任务适配器</li>
+      </ul>
+      
+      <h2>QLoRA优化</h2>
+      <p>量化+LoRA组合，在4-bit量化基础上进行微调，单卡即可微调70B模型。</p>
+      
+      <h2>实战工具</h2>
+      <p><strong>Axolotl</strong> - 主流微调框架</p>
+      <p><strong>Unsloth</strong> - 加速微调工具，2倍速</p>
+      <p><strong>LLaMA-Factory</strong> - 开源微调平台</p>
+    `,
+    category: 'ai',
+    categoryName: 'AI工程师',
+    date: '2026-04-25',
+    readTime: '15分钟',
+    icon: '⚙️'
+  },
+  {
+    id: 15,
+    title: '向量数据库：AI应用的记忆存储',
+    summary: '主流向量数据库对比与选型，构建高效的语义检索系统。',
+    content: `
+      <h2>向量数据库的作用</h2>
+      <p>存储嵌入向量，支持高效相似度搜索，是RAG系统和AI应用的核心基础设施。</p>
+      
+      <h2>主流产品对比</h2>
+      <table style="width:100%;border-collapse:collapse;">
+        <tr><th style="border:1px solid #333;padding:8px;">数据库</th><th style="border:1px solid #333;padding:8px;">特点</th></tr>
+        <tr><td style="border:1px solid #333;padding:8px;">Milvus</td><td style="border:1px solid #333;padding:8px;">开源、可扩展、成熟</td></tr>
+        <tr><td style="border:1px solid #333;padding:8px;">Pinecone</td><td style="border:1px solid #333;padding:8px;">云原生、免运维</td></tr>
+        <tr><td style="border:1px solid #333;padding:8px;">Qdrant</td><td style="border:1px solid #333;padding:8px;">Rust实现、高性能</td></tr>
+        <tr><td style="border:1px solid #333;padding:8px;">Weaviate</td><td style="border:1px solid #333;padding:8px;">内置向量化功能</td></tr>
+      </table>
+      
+      <h2>选型建议</h2>
+      <p>小规模场景用Chroma本地存储，生产环境推荐Milvus或Qdrant，云服务选Pinecone。</p>
+    `,
+    category: 'ai',
+    categoryName: 'AI工程师',
+    date: '2026-04-24',
+    readTime: '12分钟',
+    icon: '🗄️'
+  },
+  {
+    id: 16,
+    title: 'Prometheus监控：云原生时代的监控实践',
+    summary: '从零搭建Prometheus+Grafana监控体系，掌握指标采集与告警配置。',
+    content: `
+      <h2>Prometheus核心概念</h2>
+      <p><strong>指标(Metrics)</strong> - 带时间戳的数值数据</p>
+      <p><strong>抓取(Scraping)</strong> - 周期性拉取指标数据</p>
+      <p><strong>PromQL</strong> - 强大的指标查询语言</p>
+      
+      <h2>Exporter生态</h2>
+      <ul>
+        <li><strong>node_exporter</strong> - 系统级指标(CPU、内存、磁盘)</li>
+        <li><strong>cadvisor</strong> - Docker容器监控</li>
+        <li><strong>blackbox_exporter</strong> - HTTP/TCP探测</li>
+        <li><strong>mysqld_exporter</strong> - 数据库指标</li>
+      </ul>
+      
+      <h2>Grafana可视化</h2>
+      <p>Grafana提供丰富的图表类型和模板，支持从Prometheus等多种数据源获取数据。</p>
+      
+      <h2>告警配置</h2>
+      <p>使用AlertManager实现告警聚合、去重和路由，支持邮件、钉钉、Slack等多渠道通知。</p>
+    `,
+    category: 'devops',
+    categoryName: 'DevOps',
+    date: '2026-04-23',
+    readTime: '16分钟',
+    icon: '📊'
+  },
+  {
+    id: 17,
+    title: 'GitOps实践：ArgoCD实现声明式部署',
+    summary: '用Git作为单一真相源，实现Kubernetes集群的自动化部署。',
+    content: `
+      <h2>GitOps核心思想</h2>
+      <p>以Git仓库为唯一的配置和部署真相来源，通过自动同步机制保持集群状��与Git定义一致。</p>
+      
+      <h2>ArgoCD特点</h2>
+      <ul>
+        <li>声明式应用定义</li>
+        <li>可视化部署状态</li>
+        <li>自动同步与回滚</li>
+        <li>多集群管理</li>
+      </ul>
+      
+      <h2>工作流程</h2>
+      <p>开发者提交代码 → CI构建镜像 → 更新Yaml配置 → ArgoCD检测变更 → 自动部署到集群</p>
+      
+      <h2>最佳实践</h2>
+      <p><strong>应用(Application)</strong>：定义要部署的应用和目标集群</p>
+      <p><strong>应用集(ApplicationSet)</strong>：批量创建应用的自动化工具</p>
+      <p><strong>Rollout</strong>：支持金丝雀发布、蓝绿部署等高级策略</p>
+    `,
+    category: 'devops',
+    categoryName: 'DevOps',
+    date: '2026-04-22',
+    readTime: '14分钟',
+    icon: '🔄'
+  },
+  {
+    id: 18,
+    title: 'Python异步编程：asyncio高并发实战',
+    summary: '掌握Python异步编程范式，提升I/O密集型任务性能。',
+    content: `
+      <h2>为什么需要异步？</h2>
+      <p>在I/O密集型场景（如网络请求、文件读写），异步编程能显著提升并发能力和资源利用率。</p>
+      
+      <h2>核心概念</h2>
+      <p><strong>协程(Coroutine)</strong>：可在暂停和恢复间切换的函数</p>
+      <p><strong>事件循环(Event Loop)</strong>：调度协程执行的引擎</p>
+      <p><strong>Future/Task</strong>：协程的包装器，代表未来结果</p>
+      
+      <h2>实战示例</h2>
+      <pre><code>import asyncio
+
+async def fetch(url):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            return await response.json()
+
+async def main():
+    tasks = [fetch(url) for url in urls]
+    results = await asyncio.gather(*tasks)
+
+asyncio.run(main())</code></pre>
+      
+      <h2>常用框架</h2>
+      <p><strong>aiohttp</strong>：异步HTTP客户端</p>
+      <p><strong>FastAPI</strong>：异步Web框架</p>
+      <p><strong>SQLAlchemy async</strong>：异步ORM</p>
+    `,
+    category: 'project',
+    categoryName: '项目实战',
+    date: '2026-04-21',
+    readTime: '15分钟',
+    icon: '🐍'
+  },
+  {
+    id: 19,
+    title: 'SRE稳定性保障：SLI/SLO/SLA实践指南',
+    summary: '用SRE方法论量化服务质量，建立可观测性体系。',
+    content: `
+      <h2>核心概念</h2>
+      <p><strong>SLI (Service Level Indicator)</strong>：服务质量指标，如延迟、可用率</p>
+      <p><strong>SLO (Service Level Objective)</strong>：目标值，如99.9%可用</p>
+      <p><strong>SLA (Service Level Agreement)</strong>：对外承诺协议</p>
+      
+      <h2>关键指标选择</h2>
+      <ul>
+        <li><strong>延迟</strong>：P50/P90/P99响应时间</li>
+        <li><strong>可用性</strong>：成功请求占比</li>
+        <li><strong>吞吐量</strong>：QPS/TPS</li>
+        <li><strong>错误率</strong>：5xx错误占比</li>
+      </ul>
+      
+      <h2>Error Budget策略</h2>
+      <p>用error budget替代严格SLO，留给团队创新空间。当预算耗尽时暂停新功能，专注稳定性。</p>
+      
+      <h2>可观测性三要素</h2>
+      <p><strong>指标(Metrics)</strong>：聚合数值 → Prometheus</p>
+      <p><strong>日志(Logs)</strong>：事件记录 → Loki/ELK</p>
+      <p><strong>链路(Traces)</strong>：调用链路 → Jaeger</p>
+    `,
+    category: 'devops',
+    categoryName: 'DevOps',
+    date: '2026-04-20',
+    readTime: '13分钟',
+    icon: '📈'
+  },
+  {
+    id: 20,
+    title: 'AI编程工具对比：Copilot vs Cursor vs Claude',
+    summary: '主流AI编程助手深度对比，找到最适合你的代码搭档。',
+    content: `
+      <h2>GitHub Copilot</h2>
+      <p><strong>优势</strong>：集成度高、实时补全、上下文理解</p>
+      <p><strong>特点</strong>：基于OpenAI Codex模型，支持多语言</p>
+      <p><strong>适合</strong>：习惯VS Code、需要快速补全的开发者</p>
+      
+      <h2>Cursor</h2>
+      <p><strong>优势</strong>：对话式交互、代码库感知、Composer多文件编辑</p>
+      <p><strong>特点</strong>：深度集成GPT-4/Claude，自研模型优化</p>
+      <p><strong>适合</strong>：需要重构、生成复杂功能的场景</p>
+      
+      <h2>Claude ( Anthropic )</h2>
+      <p><strong>优势</strong>：长上下文、分析能力强、安全性高</p>
+      <p><strong>特点</strong>：100K上下文窗口，适合大型项目</p>
+      <p><strong>适合</strong>：代码审查、架构设计、长文件编辑</p>
+      
+      <h2>选型建议</h2>
+      <p>日常补全用Copilot，复杂任务用Cursor，代码审查用Claude。结合使用效果更佳。</p>
+    `,
+    category: 'project',
+    categoryName: '项目实战',
+    date: '2026-04-19',
+    readTime: '12分钟',
+    icon: '💻'
   }
 ];
 

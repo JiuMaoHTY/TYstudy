@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initArticleCards();
   initFilters();
   initPathAnimation();
+  initReadingProgress();
+  initBackToTop();
+  initScrollAnimations();
 });
 
 // ==================== 主题切换 ====================
@@ -35,6 +38,13 @@ function updateThemeIcon(theme) {
 let currentPage = 'home';
 
 function navigateTo(page, articleId = null) {
+  // 关闭搜索结果
+  hideSearchResults();
+  
+  // 隐藏文章目录
+  const toc = document.getElementById('article-toc');
+  if (toc) toc.classList.remove('visible');
+  
   // 移除所有页面的active状态
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   
@@ -65,6 +75,86 @@ function navigateTo(page, articleId = null) {
   
   return false;
 }
+
+// ==================== 阅读进度条 ====================
+function initReadingProgress() {
+  const progressBar = document.getElementById('reading-progress');
+  if (!progressBar) return;
+  
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (scrollTop / docHeight) * 100;
+    progressBar.style.width = `${progress}%`;
+  });
+}
+
+// ==================== 回到顶部 ====================
+function initBackToTop() {
+  const backToTopBtn = document.getElementById('back-to-top');
+  if (!backToTopBtn) return;
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  });
+}
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ==================== 文章搜索 ====================
+function searchArticles(query) {
+  const resultsContainer = document.getElementById('search-results');
+  const resultsContent = document.getElementById('search-results-content');
+  
+  if (!query || query.length < 1) {
+    hideSearchResults();
+    return;
+  }
+  
+  const lowerQuery = query.toLowerCase();
+  const results = articlesData.filter(article => 
+    article.title.toLowerCase().includes(lowerQuery) ||
+    article.summary.toLowerCase().includes(lowerQuery) ||
+    article.categoryName.toLowerCase().includes(lowerQuery)
+  );
+  
+  if (results.length === 0) {
+    resultsContent.innerHTML = `
+      <div class="search-no-results">
+        <p>未找到匹配的文章</p>
+      </div>
+    `;
+  } else {
+    resultsContent.innerHTML = results.map(article => `
+      <div class="search-result-item" onclick="navigateTo('article', ${article.id})">
+        <h4>${article.icon} ${article.title}</h4>
+        <p>${article.summary}</p>
+      </div>
+    `).join('');
+  }
+  
+  resultsContainer.classList.add('active');
+}
+
+function hideSearchResults() {
+  const resultsContainer = document.getElementById('search-results');
+  if (resultsContainer) {
+    resultsContainer.classList.remove('active');
+  }
+}
+
+// 点击其他地方关闭搜索结果
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.search-box') && !e.target.closest('.search-results')) {
+    hideSearchResults();
+  }
+});
 
 // ==================== 文章卡片渲染 ====================
 function initArticleCards() {
@@ -156,6 +246,71 @@ function renderArticleDetail(articleId) {
       ${article.content}
     </div>
   `;
+  
+  // 生成目录
+  setTimeout(() => {
+    generateTableOfContents();
+  }, 100);
+}
+
+// ==================== 文章目录 ====================
+function generateTableOfContents() {
+  const tocNav = document.getElementById('toc-nav');
+  const tocContainer = document.getElementById('article-toc');
+  const articleBody = document.querySelector('.article-body');
+  
+  if (!tocNav || !articleBody) return;
+  
+  // 提取h2和h3标题
+  const headings = articleBody.querySelectorAll('h2, h3');
+  
+  if (headings.length < 2) {
+    tocContainer.classList.remove('visible');
+    return;
+  }
+  
+  tocNav.innerHTML = '';
+  
+  headings.forEach((heading, index) => {
+    const id = `toc-heading-${index}`;
+    heading.id = id;
+    
+    const a = document.createElement('a');
+    a.href = `#${id}`;
+    a.textContent = heading.textContent;
+    a.className = heading.tagName === 'H3' ? 'level-3' : '';
+    
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    
+    tocNav.appendChild(a);
+  });
+  
+  // 显示目录
+  tocContainer.classList.add('visible');
+  
+  // 滚动监听高亮
+  initTocScrollSpy();
+}
+
+function initTocScrollSpy() {
+  const tocLinks = document.querySelectorAll('#toc-nav a');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(link => link.classList.remove('active'));
+        const activeLink = document.querySelector(`#toc-nav a[href="#${entry.target.id}"]`);
+        if (activeLink) activeLink.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  
+  document.querySelectorAll('.article-body h2, .article-body h3').forEach(heading => {
+    observer.observe(heading);
+  });
 }
 
 // ==================== 学习路径动画 ====================
@@ -199,6 +354,3 @@ function initScrollAnimations() {
     observer.observe(el);
   });
 }
-
-// 初始化滚动动画
-initScrollAnimations();

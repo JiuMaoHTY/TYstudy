@@ -8,6 +8,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- 阅读进度条 -->
+  <div class="reading-progress" id="reading-progress"></div>
+  
+  <!-- 回到顶部按钮 -->
+  <button class="back-to-top" id="back-to-top" onclick="scrollToTop()">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
   <!-- 导航栏 -->
   <nav class="navbar">
     <div class="nav-container">
@@ -20,9 +30,17 @@
         <li><a href="#" onclick="navigateTo('articles')">文章</a></li>
         <li><a href="#" onclick="navigateTo('about')">关于</a></li>
       </ul>
-      <button class="theme-toggle" onclick="toggleTheme()">
-        <span class="theme-icon">🌙</span>
-      </button>
+      <div class="nav-actions">
+        <div class="search-box">
+          <input type="text" placeholder="搜索文章..." id="search-input" oninput="searchArticles(this.value)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+          </svg>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -260,11 +278,21 @@
     </div>
   </main>
 
+  <!-- 搜索结果弹窗 -->
+  <div class="search-results" id="search-results">
+    <div class="search-results-content" id="search-results-content"></div>
+  </div>
+
   <!-- 文章详情页 -->
   <main id="article-page" class="page">
     <article class="article-detail" id="article-detail">
       <!-- 文章内容由JS动态生成 -->
     </article>
+    <!-- 文章目录 -->
+    <aside class="article-toc" id="article-toc">
+      <h3>目录</h3>
+      <nav id="toc-nav"></nav>
+    </aside>
   </main>
 
   <!-- 关于页 -->
