@@ -1,4 +1,4 @@
-// AI学习博客应用逻辑
+// 学习笔记应用逻辑
 
 // DOM加载完成后初始化
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,7 +9,16 @@ document.addEventListener('DOMContentLoaded', () => {
   initReadingProgress();
   initBackToTop();
   initScrollAnimations();
+  updateNoteCount();
 });
+
+// 更新笔记数量显示
+function updateNoteCount() {
+  const noteCountEl = document.getElementById('note-count');
+  if (noteCountEl) {
+    noteCountEl.textContent = articlesData.length + '+';
+  }
+}
 
 // ==================== 主题切换 ====================
 function initTheme() {
