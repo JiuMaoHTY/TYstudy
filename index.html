@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI智学堂 - 人工智能学习博客</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo" onclick="navigateTo('home')">
+        <span class="logo-icon">🧠</span>
+        <span class="logo-text">AI智学堂</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#" onclick="navigateTo('home')" class="active">首页</a></li>
+        <li><a href="#" onclick="navigateTo('articles')">文章</a></li>
+        <li><a href="#" onclick="navigateTo('about')">关于</a></li>
+      </ul>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- 首页 -->
+  <main id="home-page" class="page active">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-bg">
+        <div class="grid-pattern"></div>
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>人工智能学习社区</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="title-line">探索</span>
+          <span class="title-line gradient-text">AI前沿技术</span>
+        </h1>
+        <p class="hero-subtitle">
+          从机器学习到深度学习，从理论到实践。<br>
+          与你��起踏上AI学习之旅。
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="navigateTo('articles')">
+            <span>开始探索</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+          <button class="btn btn-secondary">
+            <span>了解更多</span>
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">12+</span>
+            <span class="stat-label">精选文章</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">10k+</span>
+            <span class="stat-label">学习者</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">7</span>
+            <span class="stat-label">热门专题</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="floating-card card-1">
+          <div class="card-icon">🤖</div>
+          <span>机器学习</span>
+        </div>
+        <div class="floating-card card-2">
+          <div class="card-icon">🧠</div>
+          <span>深度学习</span>
+        </div>
+        <div class="floating-card card-3">
+          <div class="card-icon">🚀</div>
+          <span>DevOps</span>
+        </div>
+        <div class="floating-card card-4">
+          <div class="card-icon">☸️</div>
+          <span>K8s</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 热门专题 -->
+    <section class="categories">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">热门专题</h2>
+          <p class="section-subtitle">涵盖AI与DevOps领域核心方向，系统化学习路径</p>
+        </div>
+        <div class="category-grid">
+          <div class="category-card" onclick="navigateTo('articles')">
+            <div class="category-icon">🤖</div>
+            <h3>机器学习</h3>
+            <p>监督学习、无监督学习、强化学习基础原理</p>
+            <div class="category-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
+          <div class="category-card" onclick="navigateTo('articles')">
+            <div class="category-icon">🧠</div>
+            <h3>深度学习</h3>
+            <p>神经网络架构、CNN、RNN、Transformer</p>
+            <div class="category-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
+          <div class="category-card" onclick="navigateTo('articles')">
+            <div class="category-icon">📝</div>
+            <h3>自然语言处理</h3>
+            <p>文本处理、情感分析、语言模型</p>
+            <div class="category-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
+          <div class="category-card" onclick="navigateTo('articles')">
+            <div class="category-icon">🚀</div>
+            <h3>DevOps实战</h3>
+            <p>Docker、K8s、CI/CD自动化部署流水线</p>
+            <div class="category-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
+          <div class="category-card" onclick="navigateTo('articles')">
+            <div class="category-icon">☸️</div>
+            <h3>Kubernetes</h3>
+            <p>云原生架构、容器编排、服务网格</p>
+            <div class="category-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
+          <div class="category-card" onclick="navigateTo('articles')">
+            <div class="category-icon">⚡</div>
+            <h3>AI应用</h3>
+            <p>大模型应用、Agent开发与Prompt工程</p>
+            <div class="category-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 最新文章 -->
+    <section class="featured-articles">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">最新文章</h2>
+          <a href="#" onclick="navigateTo('articles')" class="view-all">
+            查看全部
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+        <div class="article-grid" id="article-grid">
+          <!-- 文章卡片由JS动态生成 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 学习路径 -->
+    <section class="learning-path">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">学习路径</h2>
+          <p class="section-subtitle">循序渐进，打造完整AI知识体系</p>
+        </div>
+        <div class="path-timeline">
+          <div class="path-item">
+            <div class="path-number">01</div>
+            <div class="path-content">
+              <h3>Python基础</h3>
+              <p>掌握Python编程语言，为AI学习打下坚实基础</p>
+            </div>
+          </div>
+          <div class="path-connector"></div>
+          <div class="path-item">
+            <div class="path-number">02</div>
+            <div class="path-content">
+              <h3>数学基础</h3>
+              <p>线性代数、概率统计、微积分 - AI的数学基石</p>
+            </div>
+          </div>
+          <div class="path-connector"></div>
+          <div class="path-item">
+            <div class="path-number">03</div>
+            <div class="path-content">
+              <h3>机器学习</h3>
+              <p>从理论到实践，理解传统机器学习算法</p>
+            </div>
+          </div>
+          <div class="path-connector"></div>
+          <div class="path-item">
+            <div class="path-number">04</div>
+            <div class="path-content">
+              <h3>深度学习</h3>
+              <p>神经网络核心原理，掌握主流模型架构</p>
+            </div>
+          </div>
+          <div class="path-connector"></div>
+          <div class="path-item">
+            <div class="path-number">05</div>
+            <div class="path-content">
+              <h3>专项深入</h3>
+              <p>选择CV/NLP/推荐等方向深耕发展</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<!-- 文章列表页 -->
+  <main id="articles-page" class="page">
+    <div class="container">
+      <div class="page-header">
+        <h1>全部文章</h1>
+        <p>持续更新AI与DevOps学习笔记与实践心得</p>
+      </div>
+      <div class="articles-filters">
+        <button class="filter-btn active" data-category="all">全部</button>
+        <button class="filter-btn" data-category="ml">机器学习</button>
+        <button class="filter-btn" data-category="dl">深度学习</button>
+        <button class="filter-btn" data-category="nlp">NLP</button>
+        <button class="filter-btn" data-category="devops">DevOps</button>
+        <button class="filter-btn" data-category="ai">AI工程师</button>
+        <button class="filter-btn" data-category="project">项目实战</button>
+      </div>
+      <div class="article-list" id="article-list">
+        <!-- 文章列表由JS动态生成 -->
+      </div>
+    </div>
+  </main>
+
+  <!-- 文章详情页 -->
+  <main id="article-page" class="page">
+    <article class="article-detail" id="article-detail">
+      <!-- 文章内容由JS动态生成 -->
+    </article>
+  </main>
+
+  <!-- 关于页 -->
+  <main id="about-page" class="page">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-header">
+          <div class="about-avatar">🤖</div>
+          <h1>关于AI智学堂</h1>
+        </div>
+        <div class="about-text">
+          <p>AI智学堂是一个专注于人工智能学习的知识分享平台。</p>
+          <p>我们致力于用通俗易懂的方式，让更多人了解并掌握AI技术。</p>
+          <p>无论是初学者还是有经验的开发者，都能在这里找到有价值的内容。</p>
+        </div>
+        <div class="about-features">
+          <div class="feature-item">
+            <span class="feature-icon">📚</span>
+            <h3>系统化内容</h3>
+            <p>从基础到进阶，循序渐进的学习路径</p>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">💡</span>
+            <h3>实践导向</h3>
+            <p>理论结合实践，每篇文章都可动手实践</p>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">🔥</span>
+            <h3>持续更新</h3>
+            <p>紧跟AI发展趋势，内容保持最新</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="logo-icon">🧠</span>
+          <span>AI智学堂</span>
+        </div>
+        <p class="footer-desc">探索AI前沿，分享学习心得</p>
+        <div class="footer-links">
+          <a href="#">GitHub</a>
+          <a href="#">知乎</a>
+          <a href="#">公众号</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 AI智学堂. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="articles.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
