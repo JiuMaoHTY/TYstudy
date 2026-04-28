@@ -44,3 +44,4 @@ fields:
   tags:          { type: list, max_items: 10 }
   mood:          { type: string, max: 20 }
   energy:        { type: int, range: [1, 5] }
+  field:         { type: string, max: 60 }
