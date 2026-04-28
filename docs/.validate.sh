@@ -5,7 +5,7 @@
 errors=0
 total=0
 
-for md in $(find docs -name "*.md" -not -path "*/templates/*" -not -path "*/superpowers/*" -not -path "docs/README.md"); do
+for md in $(find docs -name "*.md" -not -path "*/templates/*" -not -path "docs/README.md"); do
   total=$((total + 1))
 
   # 检查 frontmatter 分隔符
