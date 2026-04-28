@@ -1,0 +1,46 @@
+# 个人知识库 · 元数据规范 v1.0
+# 所有 .md 笔记必须包含 YAML frontmatter，字段约束如下
+
+types:
+  daily-log:
+    required: [date, type, zone, tags]
+    optional: [mood, energy, summary]
+    description: 日报/周记
+
+  learning-note:
+    required: [title, date, type, zone, domain, tags, level]
+    optional: [source, repo, related]
+    description: 技术学习/运维笔记
+
+  project-doc:
+    required: [title, date, type, zone, project_name, status, tags]
+    optional: [deadline, repo, summary]
+    description: 毕设/项目归档
+
+  interview-qa:
+    required: [title, date, type, zone, category, difficulty, tags]
+    optional: [company, source]
+    description: 面试题解
+
+  research-note:
+    required: [title, date, type, zone, field, tags]
+    optional: [paper_title, paper_url, model_name, key_insight]
+    description: AI部署/研究笔记
+
+# ── 字段约束 ──
+fields:
+  title:         { type: string, max: 80 }
+  date:          { type: date,   format: YYYY-MM-DD }
+  type:          { enum: [daily-log, learning-note, project-doc, interview-qa, research-note] }
+  zone:          { enum: [tech, devops, ai, thesis, interview, life, games] }
+  domain:        { enum: [backend, devops, llm, cs-fundamental, architecture, tool, other] }
+  category:      { enum: [os, network, database, go, java, python, system-design,
+                          algorithm, linux, docker, k8s, cicd, monitoring,
+                          llm-theory, llm-inference, prompt-eng, llm-tool] }
+  difficulty:    { enum: [easy, medium, hard] }
+  level:         { enum: [intro, intermediate, advanced, expert] }
+  status:        { enum: [draft, in-progress, done, archived] }
+  project_name:  { type: string }
+  tags:          { type: list, max_items: 10 }
+  mood:          { type: string, max: 20 }
+  energy:        { type: int, range: [1, 5] }
