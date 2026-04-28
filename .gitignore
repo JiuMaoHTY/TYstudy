@@ -1,0 +1,10 @@
+# Claude Code
+.claude/
+
+# OpenClaw
+openclaw/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
