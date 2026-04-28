@@ -1,0 +1,27 @@
+{
+  "folders": [
+    { "path": ".", "name": "个人知识库" }
+  ],
+  "settings": {
+    "files.exclude": {
+      ".claude": true,
+      ".git": true
+    },
+    "editor.wordWrap": "on",
+    "markdown.preview.breaks": true,
+    "[markdown]": {
+      "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+      "editor.formatOnSave": true,
+      "editor.tabSize": 2
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "yzhang.markdown-all-in-one",
+      "bierner.markdown-mermaid",
+      "shd101wyy.markdown-preview-enhanced",
+      "redhat.vscode-yaml",
+      "davidanson.vscode-markdownlint"
+    ]
+  }
+}
