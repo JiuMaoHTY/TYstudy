@@ -36,7 +36,7 @@ function initKbGrid() {
   if (!grid) return;
 
   grid.innerHTML = kbZones.map(zone => `
-    <a href="docs/${zone.id}/README.md" target="_blank" class="kb-card">
+    <a href="#" onclick="return navigateToMd('docs/${zone.id}/README.md')" class="kb-card">
       <div class="kb-card-icon">${zone.icon}</div>
       <div class="kb-card-body">
         <h3>${zone.name}</h3>
@@ -299,6 +299,49 @@ function renderArticleDetail(articleId) {
   } else {
     setTimeout(() => generateTableOfContents(), 100);
   }
+}
+
+// ==================== MD 文件导航 ====================
+function navigateToMd(path) {
+  hideSearchResults();
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+
+  const articlePage = document.getElementById('article-page');
+  articlePage.classList.add('active');
+  currentPage = 'article';
+
+  const container = document.getElementById('article-detail');
+  container.innerHTML = `
+    <div class="article-body">
+      <div class="md-loading">📖 加载中...</div>
+    </div>
+  `;
+
+  renderMarkdownFile(path).then(({ meta, html }) => {
+    const title = meta.title || path.split('/').pop().replace('.md', '');
+    container.innerHTML = `
+      <div class="article-header">
+        <h1>${title}</h1>
+        ${meta.date ? `<div class="article-detail-meta"><span>📅 ${meta.date}</span></div>` : ''}
+      </div>
+      <div class="article-body">${html}</div>
+    `;
+    container.querySelectorAll('pre code').forEach(b => hljs.highlightElement(b));
+    setTimeout(() => generateTableOfContents(), 100);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }).catch(err => {
+    container.innerHTML = `
+      <div class="article-body">
+        <div class="md-error">
+          <p>⚠️ 加载失败: ${err.message}</p>
+          <p>👉 <a href="${path}" target="_blank">直接查看源文件 →</a></p>
+        </div>
+      </div>
+    `;
+  });
+
+  return false;
 }
 
 // ==================== 文章目录 ====================
