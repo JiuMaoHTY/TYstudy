@@ -27,8 +27,8 @@
       </a>
       <ul class="nav-links">
         <li><a href="#" onclick="navigateTo('home')" class="active">首页</a></li>
-        <li><a href="#" onclick="navigateTo('articles')">全部笔记</a></li>
-        <li><a href="#" onclick="navigateTo('roadmap')">学习路线</a></li>
+        <li><a href="#" onclick="navigateTo('articles')">文章</a></li>
+        <li><a href="docs/README.md" target="_blank">知识库</a></li>
         <li><a href="#" onclick="navigateTo('about')">关于</a></li>
       </ul>
       <div class="nav-actions">
@@ -64,8 +64,8 @@
           <span class="title-line gradient-text">学习每一刻</span>
         </h1>
         <p class="hero-subtitle">
-          这里是我的个人知识库，记录编程、开发、工具、思维的学习笔记。<br>
-          让知识系统化，让学习有迹可循。
+          计算机科本 · 后端+云原生运维 · 本地大模型玩家<br>
+          毕设研发 + 求职备考并行，用系统化笔记驱动成长
         </p>
         <div class="hero-actions">
           <button class="btn btn-primary" onclick="navigateTo('articles')">
@@ -80,13 +80,13 @@
         </div>
         <div class="hero-stats">
           <div class="stat-item">
-            <span class="stat-number" id="note-count">20+</span>
-            <span class="stat-label">学习笔记</span>
+            <span class="stat-number">7</span>
+            <span class="stat-label">专属分区</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <span class="stat-number">8</span>
-            <span class="stat-label">学习分类</span>
+            <span class="stat-number" id="note-count">20+</span>
+            <span class="stat-label">学习笔记</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
@@ -98,91 +98,32 @@
       <div class="hero-visual">
         <div class="floating-card card-1">
           <div class="card-icon">💻</div>
-          <span>编程开发</span>
+          <span>后端技术</span>
         </div>
         <div class="floating-card card-2">
-          <div class="card-icon">🤖</div>
-          <span>AI技术</span>
+          <div class="card-icon">☸️</div>
+          <span>云原生运维</span>
         </div>
         <div class="floating-card card-3">
-          <div class="card-icon">🛠️</div>
-          <span>效率工具</span>
+          <div class="card-icon">🤖</div>
+          <span>本地大模型</span>
         </div>
         <div class="floating-card card-4">
-          <div class="card-icon">🧠</div>
-          <span>思维方法</span>
+          <div class="card-icon">🎯</div>
+          <span>求职面试</span>
         </div>
       </div>
     </section>
 
-    <!-- 学习分类 -->
-    <section class="categories">
+    <!-- 知识库分区 -->
+    <section class="kb-section">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">学习分类</h2>
-          <p class="section-subtitle">按领域整理，持续沉淀知识</p>
+          <h2 class="section-title">知识库专区</h2>
+          <p class="section-subtitle">7 大专区，贴合专属学习路线</p>
         </div>
-        <div class="category-grid">
-          <div class="category-card" onclick="navigateTo('articles')">
-            <div class="category-icon">💻</div>
-            <h3>编程开发</h3>
-            <p>Python、JavaScript、Go等语言学习与实践</p>
-            <div class="category-arrow">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </div>
-          </div>
-          <div class="category-card" onclick="navigateTo('articles')">
-            <div class="category-icon">🤖</div>
-            <h3>AI与机器学习</h3>
-            <p>深度学习、NLP、大模型应用开发</p>
-            <div class="category-arrow">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </div>
-          </div>
-          <div class="category-card" onclick="navigateTo('articles')">
-            <div class="category-icon">🚀</div>
-            <h3>DevOps运维</h3>
-            <p>Docker、K8s、CI/CD自动化部署</p>
-            <div class="category-arrow">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </div>
-          </div>
-          <div class="category-card" onclick="navigateTo('articles')">
-            <div class="category-icon">🛠️</div>
-            <h3>效率工具</h3>
-            <p>开发工具、编辑器、命令行技巧</p>
-            <div class="category-arrow">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </div>
-          </div>
-          <div class="category-card" onclick="navigateTo('articles')">
-            <div class="category-icon">🧠</div>
-            <h3>思维方法</h3>
-            <p>学习方法论、问题分析、架构设计</p>
-            <div class="category-arrow">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </div>
-          </div>
-          <div class="category-card" onclick="navigateTo('articles')">
-            <div class="category-icon">📖</div>
-            <h3>读书笔记</h3>
-            <p>技术书籍阅读笔记与总结</p>
-            <div class="category-arrow">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </div>
-          </div>
+        <div class="kb-grid" id="kb-grid">
+          <!-- 由 app.js 动态渲染 -->
         </div>
       </div>
     </section>
@@ -305,25 +246,25 @@
           <h1>关于这个知识库</h1>
         </div>
         <div class="about-text">
-          <p>这是一个个人学习笔记知识库，用于记录我在学习各种技术过程中的心得体会。</p>
-          <p>笔记内容包括编程开发、AI技术、效率工具、思维方法等多个领域。</p>
+          <p>这是一个高度个性化的个人知识库，覆盖后端开发、云原生运维、AI本地部署、毕设研发、求职备考等方向。</p>
+          <p>所有笔记遵循「简洁干货、重点加粗、自带实操命令、每篇必含个人实操总结」的铁律。</p>
           <p>通过持续记录和整理，让碎片化的知识系统化，让学习成果可追溯、可复用。</p>
         </div>
         <div class="about-features">
           <div class="feature-item">
-            <span class="feature-icon">📝</span>
-            <h3>学习笔记</h3>
-            <p>记录学习过程中的重点、难点和心得</p>
+            <span class="feature-icon">💻</span>
+            <h3>后端 + 云原生</h3>
+            <p>Go/Java 后端、Docker/K8s 运维，以 SpringBoot 和云原生技术栈为主线</p>
           </div>
           <div class="feature-item">
-            <span class="feature-icon">🔗</span>
-            <h3>知识关联</h3>
-            <p>通过标签和分类建立知识之间的联系</p>
+            <span class="feature-icon">🤖</span>
+            <h3>本地大模型玩家</h3>
+            <p>Ollama + Open WebUI + 推理优化，探索本地 LLM 的落地实践</p>
           </div>
           <div class="feature-item">
-            <span class="feature-icon">🚀</span>
-            <h3>持续更新</h3>
-            <p>随学习进度不断补充和完善内容</p>
+            <span class="feature-icon">🎯</span>
+            <h3>毕设 + 求职并行</h3>
+            <p>毕业设计研发全流程归档，后端八股 + 算法 + 面经系统化备考</p>
           </div>
         </div>
       </div>

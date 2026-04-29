@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initArticleCards();
   initFilters();
-  initPathAnimation();
+  initKbGrid();
   initReadingProgress();
   initBackToTop();
   initScrollAnimations();
@@ -18,6 +18,33 @@ function updateNoteCount() {
   if (noteCountEl) {
     noteCountEl.textContent = articlesData.length + '+';
   }
+}
+
+// ==================== 知识库分区渲染 ====================
+const kbZones = [
+  { id: 'tech',     icon: '💻', name: '技术学习',     desc: 'Go / Java / 数据库 / 分布式 / 架构',          status: '📋 有提纲' },
+  { id: 'devops',   icon: '⚙️', name: '运维笔记',     desc: 'Docker / K8s / Linux / CI/CD / 监控',         status: '📋 有提纲' },
+  { id: 'ai',       icon: '🤖', name: 'AI本地部署',   desc: 'Ollama / 推理优化 / 本地RAG / Prompt工程',    status: '✅ 有笔记' },
+  { id: 'thesis',   icon: '🎓', name: '毕设归档',     desc: '开题 → 文献 → 实验 → 答辩全流程',            status: '⬜ 框架就绪' },
+  { id: 'interview',icon: '🎯', name: '求职面试',     desc: '八股题库 / 算法模板 / 面经复盘',              status: '📋 六科提纲' },
+  { id: 'life',     icon: '📝', name: '生活杂记',     desc: '日报 / 周记 / 读书 / 效率工具',               status: '✅ 已有日报' },
+  { id: 'games',    icon: '🎮', name: '游戏存档',     desc: '攻略 / 通关记录 / 配置备份',                  status: '⬜ 框架就绪' },
+];
+
+function initKbGrid() {
+  const grid = document.getElementById('kb-grid');
+  if (!grid) return;
+
+  grid.innerHTML = kbZones.map(zone => `
+    <a href="docs/${zone.id}/README.md" target="_blank" class="kb-card">
+      <div class="kb-card-icon">${zone.icon}</div>
+      <div class="kb-card-body">
+        <h3>${zone.name}</h3>
+        <p>${zone.desc}</p>
+      </div>
+      <span class="kb-card-status">${zone.status}</span>
+    </a>
+  `).join('');
 }
 
 // ==================== 主题切换 ====================
@@ -345,7 +372,7 @@ function initPathAnimation() {
 
 // ==================== 滚动动画 ====================
 function initScrollAnimations() {
-  const animatedElements = document.querySelectorAll('.category-card, .article-card');
+  const animatedElements = document.querySelectorAll('.kb-card, .article-card');
   
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
