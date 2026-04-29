@@ -74,6 +74,8 @@ const articlesData = [
     date: '2026-04-29',
     readTime: '持续更新',
     icon: '⚡',
+    fromMd: true,
+    mdPath: 'docs/tech/database/redis-data-structures.md'
   },
 
   // ========== ② 运维笔记 ==========
