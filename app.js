@@ -299,6 +299,16 @@ function renderArticleDetail(articleId) {
   } else {
     setTimeout(() => generateTableOfContents(), 100);
   }
+
+  // AI 问答按钮
+  if (article.fromMd) {
+    const header = container.querySelector('.article-header');
+    const btn = document.createElement('button');
+    btn.className = 'btn-ai-ask';
+    btn.innerHTML = '🤖 问 AI';
+    btn.onclick = () => askAboutArticle(article);
+    header.appendChild(btn);
+  }
 }
 
 // ==================== MD 文件导航 ====================

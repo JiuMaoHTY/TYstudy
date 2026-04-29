@@ -68,3 +68,18 @@ function getCurrentArticleTitle() {
   const h1 = document.querySelector('.article-detail h1');
   return h1 ? h1.textContent : '';
 }
+
+// 基于当前文章提问
+function askAboutArticle(article) {
+  const panel = document.getElementById('ai-chat-panel');
+  if (!panel.classList.contains('open')) {
+    toggleChat();
+  }
+  const contextPreamble = `基于以下知识库笔记回答我的问题。\n\n## 笔记标题: ${article.title}\n\n笔记摘要: ${article.summary}`;
+  chatHistory = [
+    { role: 'system', content: contextPreamble },
+  ];
+  const input = document.getElementById('ai-input');
+  input.placeholder = '针对本文提问...';
+  input.focus();
+}

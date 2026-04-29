@@ -1673,3 +1673,20 @@ button {
   font-weight: 500;
   cursor: pointer;
 }
+
+/* ==================== AI 问答按钮 ==================== */
+.btn-ai-ask {
+  margin-top: 12px;
+  padding: 8px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.btn-ai-ask:hover {
+  border-color: var(--primary);
+  background: var(--bg-card);
+}
