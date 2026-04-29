@@ -36,7 +36,7 @@ function initKbGrid() {
   if (!grid) return;
 
   grid.innerHTML = kbZones.map(zone => `
-    <a href="docs/${zone.id}/README.md" target="_blank" class="kb-card">
+    <a href="#" onclick="return navigateToMd('docs/${zone.id}/README.md')" class="kb-card">
       <div class="kb-card-icon">${zone.icon}</div>
       <div class="kb-card-body">
         <h3>${zone.name}</h3>
@@ -174,7 +174,14 @@ function searchArticles(query) {
       </div>
     `).join('');
   }
-  
+
+  // AI 搜索入口
+  resultsContent.innerHTML += `
+    <div class="ai-search-trigger" onclick="triggerAiSearch('${query}')">
+      🤖 用 AI 搜索 "${query}"
+    </div>
+  `;
+
   resultsContainer.classList.add('active');
 }
 
@@ -262,12 +269,13 @@ function initFilters() {
 }
 
 // ==================== 文章详情 ====================
+let _renderId = 0; // guards against race on rapid navigation
 function renderArticleDetail(articleId) {
   const article = articlesData.find(a => a.id === articleId);
   const container = document.getElementById('article-detail');
-  
   if (!article || !container) return;
-  
+  const thisRender = ++_renderId;
+
   container.innerHTML = `
     <div class="article-header">
       <span class="article-detail-tag">${article.categoryName}</span>
@@ -279,14 +287,85 @@ function renderArticleDetail(articleId) {
     </div>
     <div class="article-cover">${article.icon}</div>
     <div class="article-body">
-      ${article.content}
+      ${article.fromMd ? '<div class="md-loading">📖 加载笔记中...</div>' : article.content}
     </div>
   `;
-  
-  // 生成目录
-  setTimeout(() => {
-    generateTableOfContents();
-  }, 100);
+
+  if (article.fromMd && article.mdPath) {
+    renderMarkdownFile(article.mdPath).then(({ html }) => {
+      if (thisRender !== _renderId) return; // stale navigation
+      container.querySelector('.article-body').innerHTML = html;
+      container.querySelectorAll('pre code').forEach(b => hljs.highlightElement(b));
+      setTimeout(() => generateTableOfContents(), 100);
+    }).catch(() => {
+      if (thisRender !== _renderId) return;
+      // fallback to inline content on fetch failure
+      container.querySelector('.article-body').innerHTML = article.content || '<p>笔记加载失败</p>';
+      setTimeout(() => generateTableOfContents(), 100);
+    });
+  } else {
+    setTimeout(() => generateTableOfContents(), 100);
+  }
+
+  // AI 问答按钮
+  if (article.fromMd) {
+    const header = container.querySelector('.article-header');
+    const btn = document.createElement('button');
+    btn.className = 'btn-ai-ask';
+    btn.innerHTML = '🤖 问 AI';
+    btn.onclick = () => askAboutArticle(article);
+    header.appendChild(btn);
+
+    // Anki 卡片按钮
+    const ankiBtn = document.createElement('button');
+    ankiBtn.className = 'btn-anki';
+    ankiBtn.innerHTML = '🃏 Anki 卡片';
+    ankiBtn.onclick = () => generateAnkiCards(article);
+    header.appendChild(ankiBtn);
+  }
+}
+
+// ==================== MD 文件导航 ====================
+function navigateToMd(path) {
+  hideSearchResults();
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+
+  const articlePage = document.getElementById('article-page');
+  articlePage.classList.add('active');
+  currentPage = 'article';
+
+  const container = document.getElementById('article-detail');
+  container.innerHTML = `
+    <div class="article-body">
+      <div class="md-loading">📖 加载中...</div>
+    </div>
+  `;
+
+  renderMarkdownFile(path).then(({ meta, html }) => {
+    const title = meta.title || path.split('/').pop().replace('.md', '');
+    container.innerHTML = `
+      <div class="article-header">
+        <h1>${title}</h1>
+        ${meta.date ? `<div class="article-detail-meta"><span>📅 ${meta.date}</span></div>` : ''}
+      </div>
+      <div class="article-body">${html}</div>
+    `;
+    container.querySelectorAll('pre code').forEach(b => hljs.highlightElement(b));
+    setTimeout(() => generateTableOfContents(), 100);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }).catch(err => {
+    container.innerHTML = `
+      <div class="article-body">
+        <div class="md-error">
+          <p>⚠️ 加载失败: ${err.message}</p>
+          <p>👉 <a href="${path}" target="_blank">直接查看源文件 →</a></p>
+        </div>
+      </div>
+    `;
+  });
+
+  return false;
 }
 
 // ==================== 文章目录 ====================

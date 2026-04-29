@@ -39,4 +39,7 @@ docker network inspect bridge
 5. **`.dockerignore`**：排除 node_modules / .git
 
 ## 个人实操总结
--
+
+- `docker inspect` 看 `LowerDir` / `UpperDir` / `MergedDir` 理解分层
+- 多阶段构建是减少镜像大小的最有效手段
+- `.dockerignore` 一定要设，避免发送不必要的 context

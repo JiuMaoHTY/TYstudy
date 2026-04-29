@@ -50,7 +50,9 @@ const articlesData = [
     categoryName: '技术学习',
     date: '2026-04-29',
     readTime: '持续更新',
-    icon: '🗄️'
+    icon: '🗄️',
+    fromMd: true,
+    mdPath: 'docs/tech/database/README.md'
   },
   {
     id: 3,
@@ -71,7 +73,9 @@ const articlesData = [
     categoryName: '技术学习',
     date: '2026-04-29',
     readTime: '持续更新',
-    icon: '⚡'
+    icon: '⚡',
+    fromMd: true,
+    mdPath: 'docs/tech/database/redis-data-structures.md'
   },
 
   // ========== ② 运维笔记 ==========
@@ -105,7 +109,9 @@ docker inspect &lt;container&gt; | jq .</code></pre>
     categoryName: '运维笔记',
     date: '2026-04-29',
     readTime: '持续更新',
-    icon: '🐳'
+    icon: '🐳',
+    fromMd: true,
+    mdPath: 'docs/devops/docker/README.md'
   },
   {
     id: 5,
@@ -132,7 +138,9 @@ kubectl run debug --rm -it --image=busybox -- sh</code></pre>
     categoryName: '运维笔记',
     date: '2026-04-29',
     readTime: '持续更新',
-    icon: '☸️'
+    icon: '☸️',
+    fromMd: true,
+    mdPath: 'docs/devops/kubernetes/README.md'
   },
   {
     id: 6,
@@ -161,7 +169,9 @@ tcpdump -i eth0 port 80 -w capture.pcap</code></pre>
     categoryName: '运维笔记',
     date: '2026-04-29',
     readTime: '持续更新',
-    icon: '🐧'
+    icon: '🐧',
+    fromMd: true,
+    mdPath: 'docs/devops/linux/README.md'
   },
 
   // ========== ③ AI本地部署 ==========
@@ -188,7 +198,9 @@ PARAMETER num_ctx 4096</code></pre>
     categoryName: 'AI本地部署',
     date: '2026-04-29',
     readTime: '持续更新',
-    icon: '🤖'
+    icon: '🤖',
+    fromMd: true,
+    mdPath: 'docs/ai/toolchain/ollama.md'
   },
   {
     id: 8,
@@ -211,7 +223,9 @@ docker compose up -d</code></pre>
     categoryName: 'AI本地部署',
     date: '2026-04-29',
     readTime: '持续更新',
-    icon: '🌐'
+    icon: '🌐',
+    fromMd: true,
+    mdPath: 'docs/ai/toolchain/open-webui.md'
   },
 
   // ========== ④ 毕设归档 ==========
@@ -235,7 +249,9 @@ docker compose up -d</code></pre>
     categoryName: '毕设归档',
     date: '2026-04-29',
     readTime: '持续更新',
-    icon: '🎓'
+    icon: '🎓',
+    fromMd: true,
+    mdPath: 'docs/thesis/README.md'
   },
 
   // ========== ⑤ 求职面试 ==========
@@ -267,7 +283,9 @@ docker compose up -d</code></pre>
     categoryName: '求职面试',
     date: '2026-04-29',
     readTime: '持续更新',
-    icon: '🎯'
+    icon: '🎯',
+    fromMd: true,
+    mdPath: 'docs/interview/os/README.md'
   },
   {
     id: 11,
@@ -298,7 +316,9 @@ docker compose up -d</code></pre>
     categoryName: '求职面试',
     date: '2026-04-29',
     readTime: '持续更新',
-    icon: '🔷'
+    icon: '🔷',
+    fromMd: true,
+    mdPath: 'docs/interview/go/README.md'
   },
   {
     id: 12,
@@ -327,7 +347,9 @@ docker compose up -d</code></pre>
     categoryName: '求职面试',
     date: '2026-04-29',
     readTime: '持续更新',
-    icon: '🍃'
+    icon: '🍃',
+    fromMd: true,
+    mdPath: 'docs/interview/java/README.md'
   },
 
   // ========== ⑥ 生活杂记 ==========
@@ -351,7 +373,9 @@ docker compose up -d</code></pre>
     categoryName: '生活杂记',
     date: '2026-04-29',
     readTime: '持续更新',
-    icon: '📝'
+    icon: '📝',
+    fromMd: true,
+    mdPath: 'docs/life/2026/04/2026-04-29.md'
   },
 
   // ========== ⑦ 游戏存档 ==========
@@ -368,7 +392,9 @@ docker compose up -d</code></pre>
     categoryName: '游戏存档',
     date: '2026-04-29',
     readTime: '持续更新',
-    icon: '🎮'
+    icon: '🎮',
+    fromMd: true,
+    mdPath: 'docs/games/README.md'
   }
 ];
 
