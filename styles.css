@@ -1343,3 +1343,90 @@ button {
 .md-error a {
   color: var(--primary);
 }
+
+/* ==================== Markdown 渲染排版 ==================== */
+.article-body h1 { font-size: 2rem; margin: 40px 0 16px; }
+.article-body h2 {
+  font-size: 1.5rem;
+  margin: 36px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+.article-body h3 { font-size: 1.2rem; margin: 28px 0 8px; }
+.article-body h4 { font-size: 1.05rem; margin: 20px 0 8px; }
+
+.article-body p { margin: 12px 0; line-height: 1.8; }
+
+.article-body ul, .article-body ol {
+  margin: 12px 0;
+  padding-left: 24px;
+  line-height: 1.8;
+}
+.article-body li { margin: 6px 0; }
+
+.article-body strong { font-weight: 600; }
+
+.article-body blockquote {
+  margin: 16px 0;
+  padding: 12px 20px;
+  border-left: 4px solid var(--primary);
+  background: var(--bg-secondary);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-secondary);
+}
+
+.article-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+.article-body th, .article-body td {
+  padding: 10px 16px;
+  border: 1px solid var(--border-color);
+  text-align: left;
+}
+.article-body th {
+  background: var(--bg-secondary);
+  font-weight: 600;
+}
+
+.article-body pre {
+  margin: 16px 0;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+.article-body pre code {
+  padding: 16px 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.article-body code:not(pre code) {
+  background: var(--bg-secondary);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+}
+
+.article-body hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 32px 0;
+}
+
+.article-body img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.article-body a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.article-body a:hover {
+  color: var(--primary-light);
+}
