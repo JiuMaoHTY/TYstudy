@@ -129,6 +129,37 @@
       </div>
     </section>
 
+    <!-- 学习仪表盘 -->
+    <section class="dashboard-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">📊 学习进度</h2>
+          <p class="section-subtitle">各知识分区 Checklist 完成情况</p>
+        </div>
+        <div class="dashboard-stats" id="dashboard-stats">
+          <div class="dstat-card">
+            <span class="dstat-value" id="dstat-total">0</span>
+            <span class="dstat-label">总笔记数</span>
+          </div>
+          <div class="dstat-card">
+            <span class="dstat-value" id="dstat-progress">0%</span>
+            <span class="dstat-label">总完成度</span>
+          </div>
+          <div class="dstat-card">
+            <span class="dstat-value" id="dstat-streak">0</span>
+            <span class="dstat-label">连续打卡</span>
+          </div>
+          <div class="dstat-card">
+            <span class="dstat-value" id="dstat-checkin" style="cursor:pointer">📝</span>
+            <span class="dstat-label">今日打卡</span>
+          </div>
+        </div>
+        <div class="dashboard-grid" id="dashboard-grid">
+          <!-- 由 dashboard.js 动态渲染 -->
+        </div>
+      </div>
+    </section>
+
     <!-- 最新文章 -->
     <section class="featured-articles">
       <div class="container">
@@ -251,5 +282,6 @@
   <script src="docs/progress-data.js"></script>
   <script src="articles.js"></script>
   <script src="app.js"></script>
+  <script src="docs/dashboard.js"></script>
 </body>
 </html>
