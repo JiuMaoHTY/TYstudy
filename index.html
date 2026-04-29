@@ -283,6 +283,29 @@
   <script src="articles.js"></script>
   <script src="app.js"></script>
   <script src="docs/llm-client.js"></script>
+  <script src="docs/ai-chat.js"></script>
   <script src="docs/dashboard.js"></script>
+
+<!-- AI 助手浮窗 -->
+<div class="ai-chat-toggle" id="ai-chat-toggle" onclick="toggleChat()">
+  🤖
+</div>
+<div class="ai-chat-panel" id="ai-chat-panel">
+  <div class="ai-chat-header">
+    <span>🤖 AI 助手</span>
+    <button onclick="toggleChat()">✕</button>
+  </div>
+  <div class="ai-chat-messages" id="ai-chat-messages">
+    <div class="ai-message ai-assistant">
+      <p>你好！我是知识库 AI 助手。可以问我技术问题、帮你总结笔记、生成面试题。</p>
+      <p class="ai-hint">💡 试着问："解释 MySQL 的 MVCC 原理"</p>
+    </div>
+  </div>
+  <div class="ai-chat-input">
+    <textarea id="ai-input" placeholder="输入问题..." rows="2"
+      onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChat()}"></textarea>
+    <button onclick="sendChat()">发送</button>
+  </div>
+</div>
 </body>
 </html>
