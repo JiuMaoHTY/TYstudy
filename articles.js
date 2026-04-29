@@ -1,526 +1,374 @@
-// 个人学习知识库文章数据
+// 个人知识库数据 — 映射到 docs/ 下的 7 个分区
 const articlesData = [
-  // ========== AI技术 ==========
+  // ========== ① 技术学习 ==========
   {
     id: 1,
-    title: '深度学习入门：从感知机到神经网络',
-    summary: '从感知机出发，理解神经网络的构建原理和工作机制',
+    title: '技术学习索引',
+    summary: 'Go / Java / 数据库 / 分布式 / 消息队列 / 架构设计',
     content: `
-      <h2>引言</h2>
-      <p>深度学习是人工智能领域最热门的技术方向。本文从最基础的概念开始，帮助你建立完整的知识体系。</p>
-      
-      <h2>感知机：神经网络的起点</h2>
-      <p>感知机(Perceptron)由Frank Rosenblatt在1957年提出，是最简单的人工神经网络模型。</p>
-      <p>感知机接收多个输入信号，通过加权求和后加上偏置，再通过激活函数产生输出。</p>
-      
-      <h2>多层感知机与反向传播</h2>
-      <p>单层感知机只能处理线性可分问题。多层感知机(MLP)通过增加隐藏层解决非线性问题。</p>
-      <p>反向传播算法(Backpropagation)是训练神经网络的核心方法，通过链式法则计算梯度。</p>
-      
-      <h2>激活函数</h2>
-      <p>激活函数为神经网络引入非线性特性。常见激活函数：</p>
+      <h2>技术学习</h2>
+      <p>后端开发为主，Go 主力、Java 辅助、Python 为工具。</p>
+      <h3>数据库</h3>
       <ul>
-        <li><strong>ReLU</strong>：最常用的激活函数</li>
-        <li><strong>Sigmoid</strong>：常用于二分类</li>
-        <li><strong>Tanh</strong>：输出范围(-1, 1)</li>
+        <li><strong>MySQL</strong>：InnoDB 架构、索引原理、MVCC、锁机制、主从复制</li>
+        <li><strong>Redis</strong>：底层数据结构、持久化、缓存策略、分布式锁、集群</li>
       </ul>
-    `,
-    category: 'ai',
-    categoryName: 'AI技术',
-    date: '2026-04-20',
-    readTime: '12分钟',
-    icon: '🧠'
-  },
-  {
-    id: 2,
-    title: '机器学习基础：监督学习核心算法',
-    summary: '线性回归、逻辑回归、支持向量机、决策树等经典算法',
-    content: `
-      <h2>监督学习概述</h2>
-      <p>监督学习通过已有的输入-输出样本对，学习从输入到输出的映射函数。</p>
-      
-      <h2>回归算法</h2>
-      <p><strong>线性回归</strong>：预测连续值输出</p>
-      <p><strong>逻辑回归</strong>：名字带"回归"，实际是分类算法</p>
-      
-      <h2>分类算法</h2>
-      <p><strong>支持向量机(SVM)</strong>：通过最大间隔分类超平面实现分类</p>
-      <p><strong>决策树</strong>：通过树形结构进行决策，易于理解</p>
-      <p><strong>随机森林</strong>：集成多棵决策树，提高泛化能力</p>
-    `,
-    category: 'ai',
-    categoryName: 'AI技术',
-    date: '2026-04-18',
-    readTime: '15分钟',
-    icon: '📊'
-  },
-  {
-    id: 3,
-    title: 'Transformer模型详解：注意力机制的革命',
-    summary: '自注意力机制如何改变NLP领域',
-    content: `
-      <h2>Transformer的诞生</h2>
-      <p>2017年Google论文《Attention Is All You Need》提出了Transformer架构。</p>
-      
-      <h2>自注意力机制</h2>
-      <p>自注意力机制允许序列中每个位置关注所有其他位置，捕获长距离依赖。</p>
-      <p>计算过程：Query、Key、Value线性变换 → 点积注意力权重 → 加权求和</p>
-      
-      <h2>应用发展</h2>
-      <p>BERT、GPT等预训练模型基于Transformer，在NLP领域取得突破性进展。</p>
-    `,
-    category: 'ai',
-    categoryName: 'AI技术',
-    date: '2026-04-15',
-    readTime: '18分钟',
-    icon: '🔗'
-  },
-  {
-    id: 4,
-    title: 'AI Agent开发：从手写识别到智能助手',
-    summary: 'AI Agent的核心概念与开发框架',
-    content: `
-      <h2>什么是AI Agent？</h2>
-      <p>AI Agent是能够自主决策、执行任务、与环境交互的智能系统。</p>
-      
-      <h2>核心组件</h2>
+      <h3>分布式</h3>
       <ul>
-        <li><strong>规划(Planning)</strong>：将复杂任务分解为子任务</li>
-        <li><strong>记忆(Memory)</strong>：存储对话历史和关键信息</li>
-        <li><strong>工具(Tools)</strong>：调用外部API、搜索、计算</li>
-        <li><strong>行动(Action)</strong>：执行决策并评估结果</li>
+        <li><strong>理论</strong>：CAP、BASE、一致性模型</li>
+        <li><strong>共识</strong>：Raft（Leader Election + Log Replication）</li>
+        <li><strong>事务</strong>：2PC / TCC / Saga</li>
+        <li><strong>治理</strong>：服务发现、负载均衡、熔断限流</li>
       </ul>
-      
-      <h2>主流框架</h2>
-      <p><strong>LangGraph</strong>：构建复杂多步骤Agent工作流</p>
-      <p><strong>CrewAI</strong>：多Agent协作框架</p>
+      <h3>更多</h3>
+      <p>消息队列（Kafka）、架构设计（微服务 + 高并发）</p>
+      <p>👉 <a href="docs/tech/README.md" target="_blank">进入技术学习专区 →</a></p>
     `,
-    category: 'ai',
-    categoryName: 'AI技术',
-    date: '2026-04-26',
-    readTime: '18分钟',
-    icon: '🤖'
-  },
-  {
-    id: 5,
-    title: '大模型微调：LoRA与QLoRA实战指南',
-    summary: '低成本高效的大模型微调技术',
-    content: `
-      <h2>为什么需要微调？</h2>
-      <p>预训练大模型具备通用能力，但针对特定领域，垂直微调能显著提升效果。</p>
-      
-      <h2>LoRA原理</h2>
-      <p>Low-Rank Adaptation通过冻结原模型权重，只训练低秩矩阵：</p>
-      <ul>
-        <li>训练参数量减少100-1000倍</li>
-        <li>显存需求大幅降低</li>
-        <li>可动态切换不同任务适配器</li>
-      </ul>
-      
-      <h2>实战工具</h2>
-      <p><strong>Axolotl</strong> - 主流微调框架</p>
-      <p><strong>LLaMA-Factory</strong> - 开源微调平台</p>
-    `,
-    category: 'ai',
-    categoryName: 'AI技术',
-    date: '2026-04-25',
-    readTime: '15分钟',
-    icon: '⚙️'
-  },
-
-  // ========== DevOps ==========
-  {
-    id: 6,
-    title: 'Docker容器化：构建高效可移植的应用环境',
-    summary: 'Docker核心概念，从镜像构建到容器编排',
-    content: `
-      <h2>Docker核心概念</h2>
-      <p><strong>镜像(Image)</strong>：应用程序模板，只读</p>
-      <p><strong>容器(Container)</strong>：镜像的运行实例</p>
-      <p><strong>仓库(Registry)</strong>：存储和分发镜像的服务</p>
-      
-      <h2>常用命令</h2>
-      <p><code>docker build</code> - 构建镜像</p>
-      <p><code>docker run</code> - 运行容器</p>
-      <p><code>docker ps</code> - 查看运行中的容器</p>
-      
-      <h2>最佳实践</h2>
-      <ul>
-        <li>使用多阶段构建减小镜像体积</li>
-        <li>合理利用构建缓存</li>
-        <li>非root用户运行容器</li>
-      </ul>
-    `,
-    category: 'devops',
-    categoryName: 'DevOps',
-    date: '2026-04-21',
-    readTime: '14分钟',
-    icon: '🐳'
-  },
-  {
-    id: 7,
-    title: 'Kubernetes入门：云原生应用部署与管理',
-    summary: 'K8s核心概念，从Pod到Deployment',
-    content: `
-      <h2>为什么需要Kubernetes？</h2>
-      <p>Kubernetes是容器编排的事实标准，提供自动化部署、扩展和管理能力。</p>
-      
-      <h2>核心概念</h2>
-      <p><strong>Pod</strong>：K8s最小调度单位</p>
-      <p><strong>Service</strong>：负载均衡和服务发现</p>
-      <p><strong>Deployment</strong>：管理Pod副本数</p>
-      <p><strong>Namespace</strong>：资源隔离</p>
-      
-      <h2>实用工具</h2>
-      <p><strong>Lens</strong> - 强大的Kubernetes IDE</p>
-      <p><strong>K9s</strong> - 终端Kubernetes管理工具</p>
-    `,
-    category: 'devops',
-    categoryName: 'DevOps',
-    date: '2026-04-19',
-    readTime: '16分钟',
-    icon: '☸️'
-  },
-  {
-    id: 8,
-    title: 'Prometheus监控：云原生监控实践',
-    summary: 'Prometheus+Grafana监控体系搭建',
-    content: `
-      <h2>Prometheus核心概念</h2>
-      <p><strong>指标(Metrics)</strong>：带时间戳的数值数据</p>
-      <p><strong>抓取(Scraping)</strong>：周期性拉取指标数据</p>
-      <p><strong>PromQL</strong>：强大的指标查询语言</p>
-      
-      <h2>Exporter生态</h2>
-      <ul>
-        <li><strong>node_exporter</strong>：系统级指标</li>
-        <li><strong>cadvisor</strong>：Docker容器监控</li>
-        <li><strong>blackbox_exporter</strong>：HTTP/TCP探测</li>
-      </ul>
-      
-      <h2>告警配置</h2>
-      <p>使用AlertManager实现告警聚合，支持多渠道通知。</p>
-    `,
-    category: 'devops',
-    categoryName: 'DevOps',
-    date: '2026-04-23',
-    readTime: '16分钟',
-    icon: '📊'
-  },
-  {
-    id: 9,
-    title: 'GitOps实践：ArgoCD声明式部署',
-    summary: '用Git作为单一真相源，实现自动化部署',
-    content: `
-      <h2>GitOps核心思想</h2>
-      <p>以Git仓库为唯一的配置和部署真相来源，通过自动同步保持集群状态一致。</p>
-      
-      <h2>ArgoCD特点</h2>
-      <ul>
-        <li>声明式应用定义</li>
-        <li>可视化部署状态</li>
-        <li>自动同步与回滚</li>
-        <li>多集群管理</li>
-      </ul>
-      
-      <h2>工作流程</h2>
-      <p>开发者提交代码 → CI构建镜像 → 更新Yaml配置 → ArgoCD检测变更 → 自动部署</p>
-    `,
-    category: 'devops',
-    categoryName: 'DevOps',
-    date: '2026-04-22',
-    readTime: '14分钟',
-    icon: '🔄'
-  },
-
-  // ========== 编程开发 ==========
-  {
-    id: 10,
-    title: 'Python异步编程：asyncio高并发实战',
-    summary: '掌握Python异步编程范式',
-    content: `
-      <h2>为什么需要异步？</h2>
-      <p>在I/O密集型场景（网络请求、文件读写），异步编程能显著提升并发能力。</p>
-      
-      <h2>核心概念</h2>
-      <p><strong>协程(Coroutine)</strong>：可在暂停和恢复间切换的函数</p>
-      <p><strong>事件循环(Event Loop)</strong>：调度协程执行的引擎</p>
-      <p><strong>Future/Task</strong>：协程的包装器</p>
-      
-      <h2>常用框架</h2>
-      <p><strong>aiohttp</strong>：异步HTTP客户端</p>
-      <p><strong>FastAPI</strong>：异步Web框架</p>
-    `,
-    category: 'coding',
-    categoryName: '编程开发',
-    date: '2026-04-21',
-    readTime: '15分钟',
-    icon: '🐍'
-  },
-  {
-    id: 11,
-    title: 'TypeScript类型体操：提升类型安全',
-    summary: 'TypeScript高级类型技巧',
-    content: `
-      <h2>为什么要学类型体操？</h2>
-      <p>类型体操让你在编译阶段发现更多错误，提高代码质量。</p>
-      
-      <h2>常用技巧</h2>
-      <p><strong>泛型约束</strong>：限制类型变量的范围</p>
-      <p><strong>条件类型</strong>：根据条件选择类型</p>
-      <p><strong>映射类型</strong>：批量转换属性类型</p>
-      <p><strong>模板字面量</strong>：构造字符串字面量类型</p>
-      
-      <h2>实用工具类型</h2>
-      <p><code>Partial&lt;T&gt;</code>：所有属性可选</p>
-      <p><code>Pick&lt;T, K&gt;</code>：选取部分属性</p>
-      <p><code>Record&lt;K, V&gt;</code>：构造对象类型</p>
-    `,
-    category: 'coding',
-    categoryName: '编程开发',
-    date: '2026-04-17',
-    readTime: '12分钟',
-    icon: '📘'
-  },
-  {
-    id: 12,
-    title: 'Git工作流：从入门到精通',
-    summary: 'Git命令与团队协作流程',
-    content: `
-      <h2>基础命令</h2>
-      <p><code>git add</code> - 暂存文件</p>
-      <p><code>git commit</code> - 提交更改</p>
-      <p><code>git push</code> - 推送到远程</p>
-      <p><code>git pull</code> - 拉取更新</p>
-      
-      <h2>分支管理</h2>
-      <p><code>git branch</code> - 查看/创建分支</p>
-      <p><code>git checkout</code> - 切换分支</p>
-      <p><code>git merge</code> - 合并分支</p>
-      
-      <h2>团队协作流程</h2>
-      <p>推荐使用Git Flow或Trunk Based Development工作流。</p>
-    `,
-    category: 'coding',
-    categoryName: '编程开发',
-    date: '2026-04-15',
-    readTime: '10分钟',
-    icon: '🔀'
-  },
-
-  // ========== 效率工具 ==========
-  {
-    id: 13,
-    title: 'VS Code高效配置：从入门到定制',
-    summary: 'VS Code配置与必备插件',
-    content: `
-      <h2>基础配置</h2>
-      <p><strong>settings.json</strong>：用户设置</p>
-      <p><strong>keybindings.json</strong>：快捷键绑定</p>
-      <p><strong>extensions.json</strong>：推荐插件列表</p>
-      
-      <h2>必备插件</h2>
-      <ul>
-        <li><strong>GitLens</strong>：增强Git功能</li>
-        <li><strong>Prettier</strong>：代码格式化</li>
-        <li><strong>ESLint</strong>：代码检查</li>
-        <li><strong>REST Client</strong>：API测试</li>
-        <li><strong>Error Lens</strong>：错误高亮</li>
-      </ul>
-      
-      <h2>效率技巧</h2>
-      <p>善用Command Palette(Ctrl+Shift+P)、多光标编辑、终端集成。</p>
-    `,
-    category: 'tools',
-    categoryName: '效率工具',
-    date: '2026-04-13',
-    readTime: '10分钟',
-    icon: '⚡'
-  },
-  {
-    id: 14,
-    title: 'AI编程工具对比：Copilot vs Cursor vs Claude',
-    summary: '主流AI编程助手深度对比',
-    content: `
-      <h2>GitHub Copilot</h2>
-      <p><strong>优势</strong>：集成度高、实时补全</p>
-      <p><strong>特点</strong>：基于OpenAI Codex模型</p>
-      <p><strong>适合</strong>：习惯VS Code、需要快速补全</p>
-      
-      <h2>Cursor</h2>
-      <p><strong>优势</strong>：对话式交互、代码库感知</p>
-      <p><strong>特点</strong>：Composer多文件编辑</p>
-      <p><strong>适合</strong>：重构、生成复杂功能</p>
-      
-      <h2>Claude</h2>
-      <p><strong>优势</strong>：长上下文、分析能力强</p>
-      <p><strong>适合</strong>：代码审查、架构设计</p>
-      
-      <h2>选型建议</h2>
-      <p>日常补全用Copilot，复杂任务用Cursor，代码审查用Claude。结合使用效果更佳。</p>
-    `,
-    category: 'tools',
-    categoryName: '效率工具',
-    date: '2026-04-19',
-    readTime: '12分钟',
+    category: 'tech',
+    categoryName: '技术学习',
+    date: '2026-04-29',
+    readTime: '持续更新',
     icon: '💻'
   },
   {
-    id: 15,
-    title: '终端效率：zsh与Oh My Zsh配置',
-    summary: '打造高效的命令行环境',
+    id: 2,
+    title: 'MySQL 学习提纲',
+    summary: 'InnoDB → 索引 → 锁 → MVCC → 日志 → 主从复制',
     content: `
-      <h2>为什么用zsh？</h2>
-      <p>zsh提供更强大的自动补全、插件系统、主题定制。</p>
-      
-      <h2>Oh My Zsh</h2>
-      <p>社区驱动的zsh配置框架，开箱即用的插件和主题。</p>
-      
-      <h2>必备插件</h2>
+      <h2>MySQL 必知必会</h2>
       <ul>
-        <li><strong>git</strong>：git命令别名</li>
-        <li><strong>z</strong>：目录跳转</li>
-        <li><strong>docker</strong>：docker命令补全</li>
-        <li><strong>kubectl</strong>：k8s命令补全</li>
+        <li><strong>InnoDB 架构</strong>：Buffer Pool / Change Buffer / Double Write</li>
+        <li><strong>索引</strong>：B+树、聚簇 vs 二级、覆盖索引、索引下推</li>
+        <li><strong>锁</strong>：Record / Gap / Next-Key Lock、意向锁、MDL</li>
+        <li><strong>事务</strong>：MVCC（ReadView + Undo Log）、隔离级别实现</li>
+        <li><strong>日志</strong>：redo log（WAL）、undo log、binlog（ROW vs STATEMENT）</li>
+        <li><strong>主从</strong>：binlog 同步、并行复制、GTID</li>
       </ul>
-      
-      <h2>Powerlevel10k</h2>
-      <p>现代化主题，快速渲染、丰富图标、分支状态显示。</p>
+      <p>👉 <a href="docs/tech/database/README.md" target="_blank">查看完整提纲 →</a></p>
     `,
-    category: 'tools',
-    categoryName: '效率工具',
-    date: '2026-04-11',
-    readTime: '8分钟',
-    icon: '⌨️'
+    category: 'tech',
+    categoryName: '技术学习',
+    date: '2026-04-29',
+    readTime: '持续更新',
+    icon: '🗄️'
+  },
+  {
+    id: 3,
+    title: 'Redis 学习提纲',
+    summary: '数据结构底层 · 持久化 · 缓存策略 · 分布式锁 · 集群',
+    content: `
+      <h2>Redis 必知必会</h2>
+      <ul>
+        <li><strong>数据结构底层</strong>：SDS / ziplist / listpack / skiplist / hashtable</li>
+        <li><strong>持久化</strong>：RDB vs AOF vs 混合持久化、BGSAVE 原理</li>
+        <li><strong>缓存策略</strong>：穿透（布隆过滤器）、击穿、雪崩</li>
+        <li><strong>分布式锁</strong>：SETNX + Lua → Redlock → Redisson</li>
+        <li><strong>集群</strong>：主从 → 哨兵 → Cluster（hash slot 16384）</li>
+      </ul>
+      <p>👉 <a href="docs/tech/database/README.md" target="_blank">查看完整提纲 →</a></p>
+    `,
+    category: 'tech',
+    categoryName: '技术学习',
+    date: '2026-04-29',
+    readTime: '持续更新',
+    icon: '⚡'
   },
 
-  // ========== 思维方法 ==========
+  // ========== ② 运维笔记 ==========
   {
-    id: 16,
-    title: '费曼学习法：把知识讲给路人听',
-    summary: '用输出倒逼输入的高效学习法',
+    id: 4,
+    title: 'Docker 实战笔记',
+    summary: 'UnionFS · Namespace · Cgroups · Dockerfile 最佳实践',
     content: `
-      <h2>核心原理</h2>
-      <p>费曼学习法的核心是"用简单语言解释复杂概念"。如果你不能简洁地解释一件事，说明你还没真正理解。</p>
-      
-      <h2>四步学习法</h2>
+      <h2>Docker 核心原理</h2>
+      <ul>
+        <li><strong>UnionFS 分层</strong>：image → container（RO 层 + RW 层）</li>
+        <li><strong>Namespace 隔离</strong>：PID / NET / MNT / UTS / IPC / User</li>
+        <li><strong>Cgroups 限制</strong>：cpu.shares / memory.limit_in_bytes</li>
+      </ul>
+      <h2>常用命令速查</h2>
+      <pre><code>docker system prune -a --volumes
+docker logs -f --tail 100 &lt;container&gt;
+docker exec -it &lt;container&gt; sh
+docker inspect &lt;container&gt; | jq .</code></pre>
+      <h2>Dockerfile 最佳实践</h2>
       <ol>
-        <li><strong>选择概念</strong>：选择一个你想学习的概念</li>
-        <li><strong>假装教学</strong>：想象你要把这个概念教给一个小孩</li>
-        <li><strong>查漏补缺</strong>：遇到卡顿，回到原始资料重新学习</li>
-        <li><strong>简化语言</strong>：用更简洁的语言重新表述</li>
+        <li>多阶段构建：build → runtime</li>
+        <li>层合并：RUN 用 && 连接</li>
+        <li>非 root 运行：USER 1000</li>
+        <li>健康检查：HEALTHCHECK 指令</li>
+        <li>.dockerignore 排除无用文件</li>
       </ol>
-      
-      <h2>实践应用</h2>
-      <p>写博客、做分享、录制视频都是费曼学习法的实践形式。</p>
+      <p>👉 <a href="docs/devops/docker/README.md" target="_blank">查看完整笔记 →</a></p>
     `,
-    category: 'thinking',
-    categoryName: '思维方法',
-    date: '2026-04-10',
-    readTime: '8分钟',
+    category: 'devops',
+    categoryName: '运维笔记',
+    date: '2026-04-29',
+    readTime: '持续更新',
+    icon: '🐳'
+  },
+  {
+    id: 5,
+    title: 'Kubernetes 实战笔记',
+    summary: 'Pod · Controller · Service · Ingress · 存储 · 排查命令',
+    content: `
+      <h2>K8s 核心资源</h2>
+      <ul>
+        <li><strong>Pod</strong>：生命周期、探针（liveness / readiness / startup）、QoS 类</li>
+        <li><strong>Controller</strong>：Deployment（滚动更新）、StatefulSet、DaemonSet</li>
+        <li><strong>Service</strong>：ClusterIP → NodePort → LoadBalancer，kube-proxy</li>
+        <li><strong>Ingress</strong>：Nginx Ingress Controller</li>
+        <li><strong>PV/PVC/StorageClass</strong>：动态供给</li>
+      </ul>
+      <h2>排查命令速查</h2>
+      <pre><code>kubectl describe pod &lt;pod&gt;
+kubectl logs -f &lt;pod&gt; --previous
+kubectl exec -it &lt;pod&gt; -- sh
+kubectl top pod/node
+kubectl run debug --rm -it --image=busybox -- sh</code></pre>
+      <p>👉 <a href="docs/devops/kubernetes/README.md" target="_blank">查看完整笔记 →</a></p>
+    `,
+    category: 'devops',
+    categoryName: '运维笔记',
+    date: '2026-04-29',
+    readTime: '持续更新',
+    icon: '☸️'
+  },
+  {
+    id: 6,
+    title: 'Linux 诊断速查',
+    summary: 'CPU / 内存 / 磁盘 / 网络 四大维度性能排查命令',
+    content: `
+      <h2>性能诊断命令</h2>
+      <pre><code># CPU
+top -Hp &lt;pid&gt;         # 线程级
+perf top               # 热点函数
+
+# 内存
+free -h
+vmstat 1
+
+# 磁盘
+iostat -x 1
+iotop
+
+# 网络
+ss -tlnp
+tcpdump -i eth0 port 80 -w capture.pcap</code></pre>
+      <p>👉 <a href="docs/devops/linux/README.md" target="_blank">查看完整笔记 →</a></p>
+    `,
+    category: 'devops',
+    categoryName: '运维笔记',
+    date: '2026-04-29',
+    readTime: '持续更新',
+    icon: '🐧'
+  },
+
+  // ========== ③ AI本地部署 ==========
+  {
+    id: 7,
+    title: 'Ollama 实操笔记',
+    summary: '模型管理 · 推理 · Modelfile 定制',
+    content: `
+      <h2>常用命令</h2>
+      <pre><code>ollama list                  # 已下载模型
+ollama pull qwen2.5:7b       # 下载
+ollama run qwen2.5:7b        # 交互
+ollama serve                 # 启动 API（默认 11434）
+ollama rm &lt;model&gt;            # 删除
+ollama show &lt;model&gt;          # 模型详情</code></pre>
+      <h2>Modelfile 定制</h2>
+      <pre><code>FROM qwen2.5:7b
+SYSTEM """你是后端开发助手。回答简洁，带代码。"""
+PARAMETER temperature 0.7
+PARAMETER num_ctx 4096</code></pre>
+      <p>👉 <a href="docs/ai/toolchain/ollama.md" target="_blank">查看完整笔记 →</a></p>
+    `,
+    category: 'ai',
+    categoryName: 'AI本地部署',
+    date: '2026-04-29',
+    readTime: '持续更新',
+    icon: '🤖'
+  },
+  {
+    id: 8,
+    title: 'Open WebUI 配置',
+    summary: 'Docker 部署 · RAG · 多模型切换',
+    content: `
+      <h2>部署</h2>
+      <pre><code>cd openclaw
+docker compose up -d</code></pre>
+      <h2>功能</h2>
+      <ul>
+        <li>多模型切换</li>
+        <li>对话历史导出</li>
+        <li>文档上传 → RAG</li>
+        <li>模型管理（拉取/删除）</li>
+      </ul>
+      <p>👉 <a href="docs/ai/toolchain/open-webui.md" target="_blank">查看完整笔记 →</a></p>
+    `,
+    category: 'ai',
+    categoryName: 'AI本地部署',
+    date: '2026-04-29',
+    readTime: '持续更新',
+    icon: '🌐'
+  },
+
+  // ========== ④ 毕设归档 ==========
+  {
+    id: 9,
+    title: '毕设归档总览',
+    summary: '开题 → 文献 → 实现 → 实验 → 答辩 全流程',
+    content: `
+      <h2>毕设流程</h2>
+      <table>
+        <tr><th>阶段</th><th>状态</th></tr>
+        <tr><td>开题报告</td><td>⬜</td></tr>
+        <tr><td>文献研究</td><td>⬜</td></tr>
+        <tr><td>系统实现</td><td>⬜</td></tr>
+        <tr><td>实验数据</td><td>⬜</td></tr>
+        <tr><td>答辩准备</td><td>⬜</td></tr>
+      </table>
+      <p>👉 <a href="docs/thesis/README.md" target="_blank">进入毕设专区 →</a></p>
+    `,
+    category: 'thesis',
+    categoryName: '毕设归档',
+    date: '2026-04-29',
+    readTime: '持续更新',
     icon: '🎓'
   },
+
+  // ========== ⑤ 求职面试 ==========
   {
-    id: 17,
-    title: '结构化思维：用MECE原则分析问题',
-    summary: '金字塔原理与结构化分析方法',
+    id: 10,
+    title: '操作系统八股',
+    summary: '进程线程 · 内存管理 · 并发同步 · IO 模型',
     content: `
-      <h2>什么是MECE？</h2>
-      <p>MECE(Mutually Exclusive, Collectively Exhaustive)即"相互独立，完全穷尽"。</p>
-      
-      <h2>结构化分析步骤</h2>
-      <ol>
-        <li><strong>明确问题</strong>：清晰定义要解决的问题</li>
-        <li><strong>分解问题</strong>：使用MECE原则分解问题</li>
-        <li><strong>验证穷尽</strong>：确保覆盖所有可能性</li>
-        <li><strong>制定方案</strong>：针对每个分支制定解决方案</li>
-      </ol>
-      
-      <h2>金字塔原理</h2>
-      <p>结论先行，以上统下，归纳分组，逻辑递进。</p>
+      <h2>进程 & 线程</h2>
+      <ul>
+        <li>进程 vs 线程 vs 协程：区别、切换开销</li>
+        <li>IPC：管道 / 共享内存 / 消息队列 / Socket / 信号</li>
+        <li>孤儿 & 僵尸进程</li>
+      </ul>
+      <h2>内存管理</h2>
+      <ul>
+        <li>虚拟内存、页表、TLB</li>
+        <li>页面置换：LRU / LFU / Clock</li>
+      </ul>
+      <h2>IO</h2>
+      <ul>
+        <li>IO 模型：阻塞 / 非阻塞 / 多路复用 / AIO</li>
+        <li>select / poll / epoll</li>
+        <li>零拷贝：sendfile / splice / mmap</li>
+      </ul>
+      <p>👉 <a href="docs/interview/os/README.md" target="_blank">查看完整提纲 →</a></p>
     `,
-    category: 'thinking',
-    categoryName: '思维方法',
-    date: '2026-04-08',
-    readTime: '10分钟',
-    icon: '🏗️'
+    category: 'interview',
+    categoryName: '求职面试',
+    date: '2026-04-29',
+    readTime: '持续更新',
+    icon: '🎯'
   },
   {
-    id: 18,
-    title: '第一性原理：追溯问题的本质',
-    summary: '从埃隆·马斯克学到的思维方法',
+    id: 11,
+    title: 'Go 八股',
+    summary: 'GMP · Channel · GC · slice · map · defer · interface',
     content: `
-      <h2>什么是第一性原理？</h2>
-      <p>第一性原理是一种从问题的本质出发进行思考的方式，而不是从类比或经验出发。</p>
-      
-      <h2>如何运用？</h2>
-      <ol>
-        <li><strong>剥离假设</strong>：去掉所有想当然的假设</li>
-        <li><strong>追溯本质</strong>：找到最基本的不可分割的事实</li>
-        <li><strong>构建方案</strong>：从本质出发构建新方案</li>
-      </ol>
-      
-      <h2>应用场景</h2>
-      <p>产品设计、技术选型、职业规划...任何需要创新思考的场景。</p>
+      <h2>语言基础</h2>
+      <ul>
+        <li>slice vs array：底层结构、扩容机制</li>
+        <li>map：底层哈希表、扩容、并发不安全</li>
+        <li>defer：LIFO 执行、参数预计算</li>
+        <li>interface：iface vs eface、nil interface</li>
+      </ul>
+      <h2>并发</h2>
+      <ul>
+        <li><strong>GMP 调度模型</strong>：G/M/P、工作窃取</li>
+        <li><strong>Channel</strong>：hchan 结构、环形队列</li>
+        <li><strong>Mutex</strong>：正常模式 + 饥饿模式</li>
+      </ul>
+      <h2>运行时</h2>
+      <ul>
+        <li><strong>GC</strong>：三色标记 + 混合写屏障</li>
+        <li><strong>逃逸分析</strong>：常见逃逸场景</li>
+      </ul>
+      <p>👉 <a href="docs/interview/go/README.md" target="_blank">查看完整提纲 →</a></p>
     `,
-    category: 'thinking',
-    categoryName: '思维方法',
-    date: '2026-04-06',
-    readTime: '8分钟',
-    icon: '💡'
+    category: 'interview',
+    categoryName: '求职面试',
+    date: '2026-04-29',
+    readTime: '持续更新',
+    icon: '🔷'
+  },
+  {
+    id: 12,
+    title: 'Java 八股',
+    summary: 'HashMap · JVM · GC · Spring Boot · 并发',
+    content: `
+      <h2>基础</h2>
+      <ul>
+        <li>HashMap：数组+链表+红黑树、put 流程、扩容</li>
+        <li>ConcurrentHashMap：1.7 分段锁 → 1.8 CAS+synchronized</li>
+      </ul>
+      <h2>JVM</h2>
+      <ul>
+        <li><strong>内存模型</strong>：堆 / 栈 / 元空间</li>
+        <li><strong>GC</strong>：CMS / G1 / ZGC</li>
+        <li><strong>类加载</strong>：双亲委派、打破（Tomcat / SPI）</li>
+      </ul>
+      <h2>Spring Boot</h2>
+      <ul>
+        <li>IoC：Bean 生命周期、循环依赖（三级缓存）</li>
+        <li>@Transactional 失效场景</li>
+      </ul>
+      <p>👉 <a href="docs/interview/java/README.md" target="_blank">查看完整提纲 →</a></p>
+    `,
+    category: 'interview',
+    categoryName: '求职面试',
+    date: '2026-04-29',
+    readTime: '持续更新',
+    icon: '🍃'
   },
 
-  // ========== 项目实战 ==========
+  // ========== ⑥ 生活杂记 ==========
   {
-    id: 19,
-    title: 'RAG实战：检索增强生成智能问答',
-    summary: '构建基于RAG的智能问答系统',
+    id: 13,
+    title: '2026-04-29 日报',
+    summary: '知识库搭建完成，7 个专属分区全部就位',
     content: `
-      <h2>RAG概述</h2>
-      <p>检索增强生成(Retrieval-Augmented Generation)结合检索系统和生成模型，解决大模型知识过时问题。</p>
-      
-      <h2>系统架构</h2>
-      <p>文档处理 → 向量检索 → 生成回答</p>
-      <p>文档首先被分块并转换为向量存储。查询时检索相关片段，由LLM生成回答。</p>
-      
-      <h2>关键优化</h2>
-      <p>分块策略、检索算法、融合排序影响系统效果。</p>
-      
-      <h2>实战框架</h2>
-      <p><strong>LangChain</strong>、<strong>LlamaIndex</strong>可快速搭建RAG系统。</p>
-    `,
-    category: 'project',
-    categoryName: '项目实战',
-    date: '2026-04-05',
-    readTime: '20分钟',
-    icon: '🔍'
-  },
-  {
-    id: 20,
-    title: 'SRE稳定性保障：SLI/SLO/SLA实践',
-    summary: '用SRE方法论量化服务质量',
-    content: `
-      <h2>核心概念</h2>
-      <p><strong>SLI</strong>：服务质量指标（延迟、可用率）</p>
-      <p><strong>SLO</strong>：目标值（如99.9%可用）</p>
-      <p><strong>SLA</strong>：对外承诺协议</p>
-      
-      <h2>关键指标</h2>
+      <h2>今日重点</h2>
+      <p>从零搭建个人知识库，7 个专属分区全部就位。</p>
+      <p>敲定 Markdown + YAML frontmatter + Git 的技术方案。</p>
+      <p>输出 5 种笔记模板，全部含「个人实操总结」section。</p>
+      <h2>明日计划</h2>
       <ul>
-        <li><strong>延迟</strong>：P50/P90/P99响应时间</li>
-        <li><strong>可用性</strong>：成功请求占比</li>
-        <li><strong>吞吐量</strong>：QPS/TPS</li>
-        <li><strong>错误率</strong>：5xx错误占比</li>
+        <li>运行完整结构验证</li>
+        <li>开始填充 MySQL 索引笔记（第一份正式学习笔记）</li>
       </ul>
-      
-      <h2>Error Budget策略</h2>
-      <p>用error budget替代严格SLO，留给团队创新空间。</p>
+      <p>👉 <a href="docs/life/2026/04/2026-04-29.md" target="_blank">查看完整日报 →</a></p>
     `,
-    category: 'project',
-    categoryName: '项目实战',
-    date: '2026-04-20',
-    readTime: '13分钟',
-    icon: '📈'
+    category: 'life',
+    categoryName: '生活杂记',
+    date: '2026-04-29',
+    readTime: '持续更新',
+    icon: '📝'
+  },
+
+  // ========== ⑦ 游戏存档 ==========
+  {
+    id: 14,
+    title: '游戏存档总览',
+    summary: '在玩 · 已通关 · 游戏笔记',
+    content: `
+      <h2>游戏存档</h2>
+      <p>记录游玩的游戏，包含攻略、通关心得、配置备份。</p>
+      <p>👉 <a href="docs/games/README.md" target="_blank">进入游戏存档 →</a></p>
+    `,
+    category: 'games',
+    categoryName: '游戏存档',
+    date: '2026-04-29',
+    readTime: '持续更新',
+    icon: '🎮'
   }
 ];
 
