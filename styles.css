@@ -1325,3 +1325,21 @@ button {
   padding-left: 24px;
   font-size: 0.75rem;
 }
+
+/* ==================== Markdown 加载与错误状态 ==================== */
+.md-loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+  font-size: 1.125rem;
+}
+
+.md-error {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+}
+
+.md-error a {
+  color: var(--accent-primary);
+}

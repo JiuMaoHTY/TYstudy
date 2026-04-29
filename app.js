@@ -265,9 +265,8 @@ function initFilters() {
 function renderArticleDetail(articleId) {
   const article = articlesData.find(a => a.id === articleId);
   const container = document.getElementById('article-detail');
-  
   if (!article || !container) return;
-  
+
   container.innerHTML = `
     <div class="article-header">
       <span class="article-detail-tag">${article.categoryName}</span>
@@ -279,14 +278,27 @@ function renderArticleDetail(articleId) {
     </div>
     <div class="article-cover">${article.icon}</div>
     <div class="article-body">
-      ${article.content}
+      <div class="md-loading">📖 加载笔记中...</div>
     </div>
   `;
-  
-  // 生成目录
-  setTimeout(() => {
-    generateTableOfContents();
-  }, 100);
+
+  if (article.fromMd && article.mdPath) {
+    renderMarkdownFile(article.mdPath).then(({ html }) => {
+      container.querySelector('.article-body').innerHTML = html;
+      container.querySelectorAll('pre code').forEach(b => hljs.highlightElement(b));
+      setTimeout(() => generateTableOfContents(), 100);
+    }).catch(err => {
+      container.querySelector('.article-body').innerHTML = `
+        <div class="md-error">
+          <p>⚠️ 笔记加载失败: ${err.message}</p>
+          <p>👉 <a href="${article.mdPath}" target="_blank">直接查看源文件 →</a></p>
+        </div>
+      `;
+    });
+  } else {
+    container.querySelector('.article-body').innerHTML = article.content;
+    setTimeout(() => generateTableOfContents(), 100);
+  }
 }
 
 // ==================== 文章目录 ====================
