@@ -174,7 +174,14 @@ function searchArticles(query) {
       </div>
     `).join('');
   }
-  
+
+  // AI 搜索入口
+  resultsContent.innerHTML += `
+    <div class="ai-search-trigger" onclick="triggerAiSearch('${query}')">
+      🤖 用 AI 搜索 "${query}"
+    </div>
+  `;
+
   resultsContainer.classList.add('active');
 }
 

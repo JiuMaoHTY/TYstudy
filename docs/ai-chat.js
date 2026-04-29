@@ -83,3 +83,22 @@ function askAboutArticle(article) {
   input.placeholder = '针对本文提问...';
   input.focus();
 }
+
+// AI 搜索
+async function triggerAiSearch(query) {
+  const articleList = articlesData.map(a => `- ${a.title}: ${a.summary}`).join('\n');
+  const prompt = `知识库文章列表:\n${articleList}\n\n用户搜索: "${query}"\n请从以上文章中找出最相关的 3 篇，简短说明每篇为什么相关。`;
+
+  const panel = document.getElementById('ai-chat-panel');
+  if (!panel.classList.contains('open')) {
+    toggleChat();
+  }
+
+  chatHistory = [
+    { role: 'system', content: '你是知识库搜索助手，根据文章列表推荐最相关内容。回答简洁，中英文混合。' },
+    { role: 'user', content: prompt }
+  ];
+
+  document.getElementById('ai-input').value = query;
+  sendChat();
+}
