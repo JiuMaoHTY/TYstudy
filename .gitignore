@@ -4,6 +4,9 @@
 # OpenClaw
 openclaw/
 
+# Claude Code memory
+memory/
+
 # OS files
 .DS_Store
 Thumbs.db
