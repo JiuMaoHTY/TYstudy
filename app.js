@@ -262,10 +262,12 @@ function initFilters() {
 }
 
 // ==================== 文章详情 ====================
+let _renderId = 0; // guards against race on rapid navigation
 function renderArticleDetail(articleId) {
   const article = articlesData.find(a => a.id === articleId);
   const container = document.getElementById('article-detail');
   if (!article || !container) return;
+  const thisRender = ++_renderId;
 
   container.innerHTML = `
     <div class="article-header">
@@ -278,25 +280,23 @@ function renderArticleDetail(articleId) {
     </div>
     <div class="article-cover">${article.icon}</div>
     <div class="article-body">
-      <div class="md-loading">📖 加载笔记中...</div>
+      ${article.fromMd ? '<div class="md-loading">📖 加载笔记中...</div>' : article.content}
     </div>
   `;
 
   if (article.fromMd && article.mdPath) {
     renderMarkdownFile(article.mdPath).then(({ html }) => {
+      if (thisRender !== _renderId) return; // stale navigation
       container.querySelector('.article-body').innerHTML = html;
       container.querySelectorAll('pre code').forEach(b => hljs.highlightElement(b));
       setTimeout(() => generateTableOfContents(), 100);
-    }).catch(err => {
-      container.querySelector('.article-body').innerHTML = `
-        <div class="md-error">
-          <p>⚠️ 笔记加载失败: ${err.message}</p>
-          <p>👉 <a href="${article.mdPath}" target="_blank">直接查看源文件 →</a></p>
-        </div>
-      `;
+    }).catch(() => {
+      if (thisRender !== _renderId) return;
+      // fallback to inline content on fetch failure
+      container.querySelector('.article-body').innerHTML = article.content || '<p>笔记加载失败</p>';
+      setTimeout(() => generateTableOfContents(), 100);
     });
   } else {
-    container.querySelector('.article-body').innerHTML = article.content;
     setTimeout(() => generateTableOfContents(), 100);
   }
 }
