@@ -1,18 +1,22 @@
 // docs/md-renderer.js — Markdown 渲染引擎
 
-// 配置 marked
-marked.setOptions({
-  highlight: function(code, lang) {
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        return hljs.highlight(code, { language: lang }).value;
-      } catch (_) {}
+// 配置 marked (v12+: use renderer API, not deprecated highlight option)
+const mdRenderer = {
+  code({ text, lang }) {
+    const language = lang && hljs.getLanguage(lang) ? lang : '';
+    let highlighted;
+    try {
+      highlighted = language
+        ? hljs.highlight(text, { language }).value
+        : hljs.highlightAuto(text).value;
+    } catch (_) {
+      highlighted = text;
     }
-    return hljs.highlightAuto(code).value;
-  },
-  breaks: true,
-  gfm: true
-});
+    return `<pre><code class="hljs language-${language}">${highlighted}</code></pre>`;
+  }
+};
+marked.use({ renderer: mdRenderer });
+marked.setOptions({ breaks: true, gfm: true });
 
 // 解析 frontmatter (--- 分隔的 YAML 头)
 function parseFrontmatter(raw) {
@@ -48,12 +52,12 @@ async function renderMarkdownFile(path) {
 
 // 生成目录 (从渲染后的 HTML 提取 h2/h3)
 function extractTocFromHtml(html) {
-  const div = document.createElement('div');
-  div.innerHTML = html;
-  const headings = div.querySelectorAll('h2, h3');
-  return Array.from(headings).map(h => ({
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, 'text/html');
+  const headings = doc.body.querySelectorAll('h2, h3');
+  return Array.from(headings).map((h, i) => ({
     level: h.tagName.toLowerCase(),
     text: h.textContent,
-    id: h.id || h.textContent.toLowerCase().replace(/\s+/g, '-').replace(/[^\w一-龥-]/g, '')
+    id: `toc-md-${i}`
   }));
 }
