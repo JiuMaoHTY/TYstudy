@@ -315,6 +315,13 @@ function renderArticleDetail(articleId) {
     btn.innerHTML = '🤖 问 AI';
     btn.onclick = () => askAboutArticle(article);
     header.appendChild(btn);
+
+    // Anki 卡片按钮
+    const ankiBtn = document.createElement('button');
+    ankiBtn.className = 'btn-anki';
+    ankiBtn.innerHTML = '🃏 Anki 卡片';
+    ankiBtn.onclick = () => generateAnkiCards(article);
+    header.appendChild(ankiBtn);
   }
 }
 

@@ -102,3 +102,47 @@ async function triggerAiSearch(query) {
   document.getElementById('ai-input').value = query;
   sendChat();
 }
+
+// Anki 卡片生成
+async function generateAnkiCards(article) {
+  const toast = document.createElement('div');
+  toast.className = 'anki-toast';
+  toast.textContent = '🃏 正在生成 Anki 卡片...';
+  document.body.appendChild(toast);
+
+  try {
+    const content = article.mdPath
+      ? `标题: ${article.title}\n摘要: ${article.summary}`
+      : `标题: ${article.title}\n内容: ${article.content.replace(/<[^>]*>/g, '').slice(0, 1500)}`;
+
+    const prompt = `你是一个 Anki 卡片生成器。基于以下笔记内容，生成 5 张问答卡片。
+每张卡片的格式：**Q:** 问题\n**A:** 答案
+卡片之间用 --- 分隔。
+
+注意：
+- 问题要考察核心知识点
+- 答案要简洁、准确
+- 适合技术面试复习
+
+笔记：
+${content}`;
+
+    const response = await chat([
+      { role: 'system', content: '你是一个 Anki 卡片生成器。输出格式严格按照要求。' },
+      { role: 'user', content: prompt }
+    ]);
+
+    // 显示结果
+    const panel = document.getElementById('ai-chat-panel');
+    if (!panel.classList.contains('open')) toggleChat();
+    chatHistory = [];
+    addMessage('assistant', '📇 **生成的 Anki 卡片**\n\n' + response);
+    chatHistory.push({ role: 'assistant', content: response });
+
+    toast.textContent = '✅ Anki 卡片已生成！可复制到 Anki 导入';
+    setTimeout(() => toast.remove(), 3000);
+  } catch (err) {
+    toast.textContent = `⚠️ 生成失败: ${err.message}`;
+    setTimeout(() => toast.remove(), 3000);
+  }
+}

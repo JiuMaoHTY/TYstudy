@@ -1703,3 +1703,36 @@ button {
 .ai-search-trigger:hover {
   background: var(--bg-secondary);
 }
+
+/* ==================== Anki 卡片 ==================== */
+.btn-anki {
+  margin-top: 12px;
+  margin-left: 8px;
+  padding: 8px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.btn-anki:hover {
+  border-color: var(--accent);
+  background: var(--bg-card);
+}
+
+.anki-toast {
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  z-index: 2000;
+  font-size: 0.875rem;
+  animation: fadeIn 0.3s ease;
+}
